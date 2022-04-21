@@ -11,18 +11,20 @@
     <section class="login-page">
       <section class="welcome-message">
         <h1 class="login-page-welcome">✨ Overlook Hotel ✨</h1>
+        <p class="login-error-text">Login</p>
       </section>
       <section class="login-area">
         <form class="login-form">
           <label for="login-username" class="login-username">Enter Your Username:</label>
-          <input class="enter-username" name="text-option" type="text" id="username" placeholder="Enter username here">
+          <input class="enter-username" name="text-option" type="text" id="username" placeholder="Enter username here" required>
           <label for="login-password" class="login-password">Enter Your Password:</label>
-          <input class="enter-password" name="text-option" type="password" id="password" placeholder="Enter password here">
-          <button class="login-button" type="button" id="loginButton">Submit</button>
+          <input class="enter-password" name="text-option" type="password" id="password" placeholder="Enter password here" required>
+          <button class="login-button" type="submit" id="loginButton">Submit</button>
         </form>
       </section>
     </section>
 
+    <!-- //hidden initially -->
     <section class="main-page">
       <section class="top-section">
         <section class="user-name-display">
@@ -38,11 +40,24 @@
 
       <section class="main-section">
         <section class="user-experience-area">
+          <p class="message-error-text">Book Now?</p>
+
+          <form class="booking-form">
+            <label for="book-date" class="book-date">Book Date</label>
+            <input class="enter-date" type="date" id="date" required></input>
+            <label for="room-type" class="room-type">Choose Room Type</label>
+            <input class="junior-suite" type="radio" name="rooms" value="junior suite">Junior Suite</input>
+            <input class="suite" type="radio" name="rooms" value="suite">Suite</input>
+            <input class="residential-suite" type="radio" name="rooms" value="residential suite">Residential Suite</input>
+            <input class="single-room" type="radio" name="rooms" value="single room">Single Room</input>
+            <button class="search-button" type="submit" id="searchBookingButton">Search</button>
+          </form>
 
         </section>
 
-        <section class="dashboard-area">
 
+        <section class="dashboard-area">
+          <!-- TBD -->
         </section>
 
       </section>
