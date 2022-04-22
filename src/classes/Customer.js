@@ -3,6 +3,11 @@ class Customer {
     this.id = customer.id;
     this.name = customer.name;
   }
+
+  returnCustomerFirstName() {
+    const splitFullName = this.name.split(" ");
+    return splitFullName[0];
+  }
 }
 
 

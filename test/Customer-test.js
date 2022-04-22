@@ -32,4 +32,11 @@ describe('Customer', () => {
      expect(customer2.name).to.equal("Eldridge Muller");
   });
 
+  it('should be able to split customer\'s name', () => {
+	   expect(customer.returnCustomerFirstName()).to.equal('Leatha');
+     expect(customer2.returnCustomerFirstName()).to.equal('Eldridge');
+  });
+
+  
+
 });
