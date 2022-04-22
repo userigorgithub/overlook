@@ -31,5 +31,10 @@ describe('Room', () => {
     expect(room2.roomType).to.equal('single room');
   });
 
+  it('should have a biget', () => {
+  	expect(room.bidet).to.equal(true);
+    expect(room2.bidet).to.equal(false);
+  });
+
 
 });
