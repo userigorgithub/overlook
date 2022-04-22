@@ -36,5 +36,11 @@ describe('Room', () => {
     expect(room2.bidet).to.equal(false);
   });
 
+  it('should have a bed size', () => {
+  	expect(room.bedSize).to.equal('queen');
+    expect(room2.bedSize).to.equal('queen');
+  });
+
+
 
 });
