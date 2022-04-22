@@ -5,7 +5,7 @@ import Customer from '../src/classes/Customer';
 
 describe('Customer', () => {
 
-  let customer;
+  let customer, customerData;
 
   beforeEach(() => {
 
@@ -13,8 +13,14 @@ describe('Customer', () => {
 
   });
 
+  it('should be a function', () => {
+    expect(Customer).to.be.a('function');
+  });
+
+  it('should be an instance of Customer', () => {
+    expect(customer).to.be.an.instanceOf(Customer);
+  });
 
 
 
-  
 });
