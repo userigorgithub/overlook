@@ -10,7 +10,7 @@ describe('Customer', () => {
   beforeEach(() => {
 
     customer = new Customer(customerData[0]);
-    customer2 = new Customer(customerData[1]);
+    customer2 = new Customer(customerData[2]);
 
   });
 
@@ -23,8 +23,13 @@ describe('Customer', () => {
   });
 
   it('should have an id', () => {
-	   expect(customer.id).to.equal(customerData[0].id);
-     expect(customer2.id).to.equal(customerData[1].id);
+	   expect(customer.id).to.equal(1);
+     expect(customer2.id).to.equal(50);
+  });
+
+  it('should have a name', () => {
+	   expect(customer.name).to.equal("Leatha Ullrich");
+     expect(customer2.name).to.equal("Eldridge Muller");
   });
 
 });
