@@ -26,5 +26,10 @@ describe('Booking', () => {
     expect(booking2.id).to.equal("5fwrgu4i7k55hl79t");
   });
 
+  it('should have a userID', () => {
+  	expect(booking.userID).to.equal(1);
+    expect(booking2.userID).to.equal(50);
+    });
+
 
 });
