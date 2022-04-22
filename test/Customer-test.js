@@ -1,15 +1,16 @@
 import { expect } from 'chai';
-import customerData from './Customer-data.js';
+import customerData from './Customer-data';
 import Customer from '../src/classes/Customer';
 
 
 describe('Customer', () => {
 
-  let customer, customerData;
+  let customer, customer2;
 
   beforeEach(() => {
 
-  customer = new Customer(customerData);
+    customer = new Customer(customerData[0]);
+    customer2 = new Customer(customerData[1]);
 
   });
 
@@ -21,6 +22,9 @@ describe('Customer', () => {
     expect(customer).to.be.an.instanceOf(Customer);
   });
 
-
+  it('should have an id', () => {
+	   expect(customer.id).to.equal(customerData[0].id);
+     expect(customer2.id).to.equal(customerData[1].id);
+  });
 
 });
