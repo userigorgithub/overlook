@@ -11,6 +11,16 @@ describe('Booking', () => {
     booking = new Booking(bookingData[0]);
     booking2 = new Booking(bookingData[2]);
 
-
   });
+
+  it('should be a function', () => {
+    expect(Booking).to.be.a('function');
+  });
+
+  it('should be an instance of Booking', () => {
+    expect(booking).to.be.an.instanceOf(Booking);
+  });
+
+
+
 });
