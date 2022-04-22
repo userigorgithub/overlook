@@ -31,5 +31,10 @@ describe('Booking', () => {
     expect(booking2.userID).to.equal(50);
     });
 
+  it('should have a booking date', () => {
+	  expect(booking.date).to.equal('2022/02/15');
+    expect(booking2.date).to.equal('2022/02/04');
+  });
+
 
 });
