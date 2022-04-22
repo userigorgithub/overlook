@@ -21,6 +21,10 @@ describe('Booking', () => {
     expect(booking).to.be.an.instanceOf(Booking);
   });
 
+  it('should have a booking id', () => {
+	  expect(booking.id).to.equal('5fwrgu4i7k55hl76z');
+    expect(booking2.id).to.equal("5fwrgu4i7k55hl79t");
+  });
 
 
 });

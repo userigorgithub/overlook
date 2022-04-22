@@ -1,6 +1,6 @@
 class Booking {
-  constructor() {
-
+  constructor(booking) {
+    this.id = booking.id;
   }
 }
 
