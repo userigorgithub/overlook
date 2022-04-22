@@ -1,5 +1,5 @@
 
-const booking = [
+const bookingData = [
   {
     "id": "5fwrgu4i7k55hl76z",
     "userID": 1,
