@@ -26,5 +26,10 @@ describe('Room', () => {
     expect(room2.number).to.equal(4);
   });
 
+  it('should have a room type', () => {
+  	expect(room.roomType).to.equal('residential suite');
+    expect(room2.roomType).to.equal('single room');
+  });
+
 
 });
