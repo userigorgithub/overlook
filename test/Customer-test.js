@@ -23,20 +23,23 @@ describe('Customer', () => {
   });
 
   it('should have an id', () => {
-	   expect(customer.id).to.equal(1);
-     expect(customer2.id).to.equal(50);
+	  expect(customer.id).to.equal(1);
+    expect(customer2.id).to.equal(50);
   });
 
   it('should have a name', () => {
-	   expect(customer.name).to.equal("Leatha Ullrich");
-     expect(customer2.name).to.equal("Eldridge Muller");
+	  expect(customer.name).to.equal("Leatha Ullrich");
+    expect(customer2.name).to.equal("Eldridge Muller");
   });
 
   it('should be able to split customer\'s name', () => {
-	   expect(customer.returnCustomerFirstName()).to.equal('Leatha');
-     expect(customer2.returnCustomerFirstName()).to.equal('Eldridge');
+	  expect(customer.returnCustomerFirstName()).to.equal('Leatha');
+    expect(customer2.returnCustomerFirstName()).to.equal('Eldridge');
   });
 
-  
+  it('should have an empty array before booking anything', () => {
+    expect(customer.booking).to.deep.equal([]);
+    expect(customer2.booking).to.deep.equal([]);
+  })
 
 });
