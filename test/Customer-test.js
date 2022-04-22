@@ -40,6 +40,11 @@ describe('Customer', () => {
   it('should have an empty array before booking anything', () => {
     expect(customer.booking).to.deep.equal([]);
     expect(customer2.booking).to.deep.equal([]);
-  })
+  });
+
+  it('should start with $0 total spent before booking anything', () => {
+    expect(customer.totalSpent).to.equal(0);
+    expect(customer2.totalSpent).to.equal(0);
+  });
 
 });
