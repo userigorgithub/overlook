@@ -42,9 +42,12 @@ describe('Customer', () => {
     expect(customer2.booking).to.deep.equal([]);
   });
 
-  it('should start with $0 total spent before booking anything', () => {
+  it('should have a $0 total spent before booking anything', () => {
     expect(customer.totalSpent).to.equal(0);
     expect(customer2.totalSpent).to.equal(0);
   });
 
+  it('should be able to add money after customer\'s booking', () => {
+    //COMING SOON
+  });
 });
