@@ -21,5 +21,10 @@ describe('Room', () => {
     expect(room).to.be.an.instanceOf(Room);
   });
 
+  it('should have a room number', () => {
+  	expect(room.number).to.equal(1);
+    expect(room2.number).to.equal(4);
+  });
+
 
 });
