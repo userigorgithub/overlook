@@ -29,7 +29,7 @@
       <section class="top-section">
         <section class="user-name-display">
           <h1 class="user-welcome">Greetings, User!</h1>
-          <h2 class="total-spent">Your Spending: $$$</h2>
+          <h2 class="total-spent">Your Spending, $$$!</h2>
         </section>
         <section class="app-name-display">
           <h3 class="app-welcome">Welcome to Overlook Hotel!</h3>
@@ -45,13 +45,13 @@
           <p class="message-error-text">Book Your Stay Now?</p>
 
           <form class="booking-form">
-            <label for="book-date" class="book-date">Choose Date</label>
+            <label for="book-date" class="book-date">Select Date:</label>
             <input class="enter-date" type="date" id="date" required></input>
-            <label for="room-type" class="room-type">Choose Room Type</label>
-            <input class="junior-suite" type="radio" name="rooms" value="junior suite">Junior Suite</input>
-            <input class="suite" type="radio" name="rooms" value="suite">Suite</input>
-            <input class="residential-suite" type="radio" name="rooms" value="residential suite">Residential Suite</input>
-            <input class="single-room" type="radio" name="rooms" value="single room">Single Room</input>
+            <label for="room-type" class="room-type">Select Room Type:</label>
+            <label for="suite"><input class="suite" type="radio" name="rooms" value="suite">Suite</label>
+            <label for="junior-suite"><input class="junior-suite" type="radio" name="rooms" value="junior suite">Junior Suite</label>
+            <label for="residential-suite"><input class="residential-suite" type="radio" name="rooms" value="residential suite">Residential Suite</label>
+            <label for="single-room"><input class="single-room" type="radio" name="rooms" value="single room">Single Room</label>
             <button class="search-button" type="submit" id="searchBookingButton">Search</button>
           </form>
 
