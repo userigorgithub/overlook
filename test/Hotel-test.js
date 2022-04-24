@@ -23,4 +23,23 @@ describe('Hotel', () => {
     expect(hotel).to.be.an.instanceOf(Hotel);
   });
 
+  it('should have customer data', () => {
+	  expect(hotel.customerData).to.deep.equal([
+      {
+        "id": 1,
+        "name": "Leatha Ullrich"
+      },
+      {
+        "id": 4,
+        "name": "Kennedi Emard"
+      },
+      {
+        "id": 50,
+        "name": "Eldridge Muller"
+      }
+    ]);
+  });
+
+  
+
 });
