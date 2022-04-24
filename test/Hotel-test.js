@@ -156,4 +156,8 @@ describe('Hotel', () => {
     expect(hotel.rooms).to.deep.equal([]);
   });
 
+  it('should have an empty array of bookings at start', () => {
+    expect(hotel.bookings).to.deep.equal([]);
+  });
+
 });
