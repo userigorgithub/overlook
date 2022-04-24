@@ -8,18 +8,18 @@
   </head>
   <body>
 
-    <section class="login-page">
-      <section class="welcome-message">
-        <h1 class="login-page-welcome">✨ Overlook Hotel ✨</h1>
+    <section class="login-page hidden">
+      <section class="title-message">
+        <h1 class="login-page-title">Overlook Hotel</h1>
         <p class="login-error-text">Please Login</p>
       </section>
       <section class="login-area">
         <form class="login-form">
-          <label for="login-username" class="login-username">Enter Your Username:</label>
+          <label for="login-username" class="login-username">Enter Username</label>
           <input class="enter-username" name="text-option" type="text" id="username" placeholder="Enter username here" required>
-          <label for="login-password" class="login-password">Enter Your Password:</label>
+          <label for="login-password" class="login-password">Enter Password</label>
           <input class="enter-password" name="text-option" type="password" id="password" placeholder="Enter password here" required>
-          <button class="login-button" type="submit" id="loginButton">Submit</button>
+          <button class="login-button" type="submit" id="loginButton">Login</button>
         </form>
       </section>
     </section>
@@ -29,12 +29,13 @@
       <section class="top-section">
         <section class="user-name-display">
           <h1 class="user-welcome">Greetings, User!</h1>
-          <p class="today-date" id="todayDate"></p>
+          <h2 class="total-spent">Your Spending, $$$!</h2>
         </section>
         <section class="app-name-display">
-          <h2 class="app-welcome">Welcome to Overlook Hotel!</h2>
+          <h3 class="app-welcome">Welcome to Overlook Hotel!</h3>
         </section>
         <section class="button-display">
+          <h4 class="today-date" id="todayDate">Display Date</h4>
           <button class="logout-button" id="logoutButton">Logout</button>
         </section>
       </section>
@@ -44,13 +45,13 @@
           <p class="message-error-text">Book Your Stay Now?</p>
 
           <form class="booking-form">
-            <label for="book-date" class="book-date">Choose Date</label>
-            <input class="enter-date" type="date" id="date" required></input>
-            <label for="room-type" class="room-type">Choose Room Type</label>
-            <input class="junior-suite" type="radio" name="rooms" value="junior suite">Junior Suite</input>
-            <input class="suite" type="radio" name="rooms" value="suite">Suite</input>
-            <input class="residential-suite" type="radio" name="rooms" value="residential suite">Residential Suite</input>
-            <input class="single-room" type="radio" name="rooms" value="single room">Single Room</input>
+            <label for="book-date" class="book-date">Select Date:</label>
+            <label for="date-time"><input class="enter-date" type="date" id="date" required></label>
+            <label for="room-type" class="room-type">Select Room Type:</label>
+            <label for="suite"><input class="suite" type="radio" name="rooms" value="suite">Suite</label>
+            <label for="junior-suite"><input class="junior-suite" type="radio" name="rooms" value="junior suite">Junior Suite</label>
+            <label for="residential-suite"><input class="residential-suite" type="radio" name="rooms" value="residential suite">Residential Suite</label>
+            <label for="single-room"><input class="single-room" type="radio" name="rooms" value="single room">Single Room</label>
             <button class="search-button" type="submit" id="searchBookingButton">Search</button>
           </form>
 
@@ -59,6 +60,7 @@
 
         <section class="dashboard-area">
           <!-- TBD -->
+          <p class="view-data">Testingssssssssss</p>
         </section>
 
       </section>
