@@ -3,6 +3,7 @@ class Hotel {
     this.customerData = customerData;
     this.roomData = roomData;
     this.bookingData = bookingData;
+    this.customers = [];
   }
 }
 
