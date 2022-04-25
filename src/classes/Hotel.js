@@ -41,11 +41,9 @@ class Hotel {
   }
 
   filterCustBookings(customer) {
-    // let customer = new Customer(customer);
     this.bookings.forEach(booking => {
       // console.log(customer.id)
       // console.log(booking.userID)
-
       if (booking.userID === customer.id) {
         customer.bookings.push(booking);
       }
@@ -54,19 +52,42 @@ class Hotel {
     return customer.bookings;
   }
 
+
+
   // filterByDate(date) {
   //   let changedDate = date.split('-').join('/');
-  //   console.log(changedDate)
+  //   // console.log(changedDate);
   //   let roomNumbers = this.bookings.reduce((acc, booking) => {
   //     if (changedDate === booking.date) {
   //       acc.push(booking.roomNumber)
-  //       console.log(booking.roomNumber);
+  //       // console.log(booking.roomNumber);
   //     }
   //     console.log(acc)
   //     return acc;
   //   }, [])
-  //   return roomNumbers;
+  //   this.availRoomsByDate = this.rooms.filter(room => !roomNumbers.includes(room.number))
+  //   return this.availRoomsByDate;
   // }
+
+  filterByRoomType() {
+    
+  }
+
+
+
+  calculateTotal() {
+    let total = this.bookings.reduce((acc, booking) => {
+      this.rooms.forEach(room => {
+        if (room.number === booking.roomNumber) {
+          acc += room.costPerNight;
+        }
+      })
+      console.log(acc);
+      return acc;
+    }, 0).toFixed(2);
+    return total;
+  }
+
 
 }
 

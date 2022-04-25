@@ -13,6 +13,7 @@ describe('Hotel', () => {
 
     hotel = new Hotel(customerData, roomData, bookingData);
     customer = new Customer(customerData[0]);
+    // console.log(customerData[2]);
     customer2 = new Customer(customerData[2]);
 
   });
@@ -202,17 +203,36 @@ describe('Hotel', () => {
     expect(hotel.availRoomsByDate).to.deep.equal([]);
   });
 
-  it('should be able to filter rooms by date', () => {
 
-    expect(hotel.filterByDate('2022/02/15').length).to.equal();
-  });
+  // it('should be able to filter rooms by date', () => {
+  //   hotel.addCustomers();
+  //   hotel.addRooms();
+  //   hotel.addBookings();
+  //   hotel.filterCustBookings(customer);
+  //   hotel.filterByDate('2022/02/25')
+  //   expect(hotel.availRoomsByDate).to.equal(87);
+  // });
 
 
+  // it('should have an empty array of available rooms by type at start', () => {
+  //   expect(hotel.availRoomsByType).to.deep.equal([]);
+  // });
 
 
   // it('should be able to filter rooms by room type', () => {
   //
   //   expect(hotel.filterByRoomType()).to.equal();
   // });
+
+
+  it('should be able to calculate all customer\'s bookings', () => {
+    hotel.addCustomers();
+    hotel.addRooms();
+    hotel.addBookings();
+    hotel.filterCustBookings(customer2);
+    expect(hotel.calculateTotal()).to.equal('927.08');
+    //adds rooms 4 and 10 for customer[0]?
+  });
+
 
 });
