@@ -1,6 +1,6 @@
 import './css/styles.css';
 import apiCalls from './apiCalls';
-import { fetchAll, apiCustomersData, apiRoomsData, apiBookingsData } from './apiCalls';
+import {fetchAll, apiCustomersData, apiRoomsData, apiBookingsData} from './apiCalls';
 
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
