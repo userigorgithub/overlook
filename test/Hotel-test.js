@@ -160,4 +160,31 @@ describe('Hotel', () => {
     expect(hotel.bookings).to.deep.equal([]);
   });
 
+  it('should be able to add customers', () => {
+    hotel.addCustomers();
+    expect(hotel.customers.length).to.equal(3);
+  });
+
+  it('should be able to add rooms', () => {
+    hotel.addRooms();
+    expect(hotel.rooms.length).to.equal(10);
+  });
+
+  it('should be able to add bookings', () => {
+    hotel.addBookings();
+    expect(hotel.bookings.length).to.equal(3);
+  });
+
+
+
+  // it('should be able to filter rooms by date', () => {
+
+  //   expect(hotel.filterByDate()).to.equal();
+  // });
+
+  // it('should be able to filter rooms by room type', () => {
+
+  //   expect(hotel.filterByRoomType()).to.equal();
+  // });
+
 });
