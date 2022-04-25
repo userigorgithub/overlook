@@ -13,29 +13,51 @@ class Hotel {
   }
 
   addCustomers() {
-    let customer = new Customer(this.customerData);
-    this.customerData.forEach(customerData => {
+    this.customerData.forEach(singleCustomerData => {
+      let customer = new Customer(singleCustomerData);
       this.customers.push(customer);
+      console.log(customer)
+      return customer;
     })
-    return customer;
   }
 
   addRooms() {
-    let room = new Room(this.roomData);
-    this.roomData.forEach(roomData => {
+    this.roomData.forEach(singleRoomData => {
+      let room = new Room(singleRoomData);
       this.rooms.push(room);
+      console.log(room)
+      return room;
     })
-    return room;
   }
 
   addBookings() {
-    let booking = new Booking(this.roomData);
-    this.bookingData.forEach(bookingData => {
+    this.bookingData.forEach(singleBookingData => {
+      let booking = new Booking(singleBookingData);
       this.bookings.push(booking);
+      console.log(booking);
+      return booking;
     })
-    return booking;
   }
 
+  // filterCustBookings(customer) {
+  //   // let customer = new Customer(customer);
+  //   this.bookings.forEach(booking => {
+  //     console.log(customer.id)
+  //     console.log(booking.userID)
+  //
+  //     if (customer.id === booking.userID) {
+  //       customer.bookings.push(booking);
+  //     }
+  //   })
+  //   // console.log(customer.bookings)
+  //   return customer.bookings;
+  // }
+
+
+
+  // filterByDate() {
+  //
+  // }
 
 }
 

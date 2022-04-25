@@ -3,15 +3,16 @@ import customerData from './Customer-data';
 import roomData from './Room-data';
 import bookingData from './Booking-data';
 import Hotel from '../src/classes/Hotel';
-
+import Customer from '../src/classes/Customer';
 
 describe('Hotel', () => {
 
-  let hotel;
+  let hotel, customer;
 
   beforeEach(() => {
 
     hotel = new Hotel(customerData, roomData, bookingData);
+    customer = new Customer(customerData[0]);
 
   });
 
@@ -175,11 +176,19 @@ describe('Hotel', () => {
     expect(hotel.bookings.length).to.equal(3);
   });
 
+  it('should be able to filter customer\'s bookings by ID', () => {
+    hotel.addCustomers();
+    hotel.addBookings();
+    hotel.filterCustBookings(customer);
+    expect(customer.bookings).to.deep.equal();
+  });
+
+
 
 
   // it('should be able to filter rooms by date', () => {
-
-  //   expect(hotel.filterByDate()).to.equal();
+  //
+  //   expect(hotel.filterByDate('2022/01/10').length).to.equal();
   // });
 
   // it('should be able to filter rooms by room type', () => {
