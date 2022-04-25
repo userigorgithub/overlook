@@ -16,7 +16,7 @@ class Hotel {
     this.customerData.forEach(singleCustomerData => {
       let customer = new Customer(singleCustomerData);
       this.customers.push(customer);
-      console.log(customer)
+      // console.log(customer)
       return customer;
     })
   }
@@ -39,19 +39,19 @@ class Hotel {
     })
   }
 
-  // filterCustBookings(customer) {
-  //   // let customer = new Customer(customer);
-  //   this.bookings.forEach(booking => {
-  //     console.log(customer.id)
-  //     console.log(booking.userID)
-  //
-  //     if (customer.id === booking.userID) {
-  //       customer.bookings.push(booking);
-  //     }
-  //   })
-  //   // console.log(customer.bookings)
-  //   return customer.bookings;
-  // }
+  filterCustBookings(customer) {
+    // let customer = new Customer(customer);
+    this.bookings.forEach(booking => {
+      console.log(customer.id)
+      console.log(booking.userID)
+
+      if (booking.userID === customer.id) {
+        customer.bookings.push(booking);
+      }
+    })
+    console.log(customer.bookings)
+    return customer.bookings;
+  }
 
 
 

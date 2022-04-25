@@ -7,12 +7,13 @@ import Customer from '../src/classes/Customer';
 
 describe('Hotel', () => {
 
-  let hotel, customer;
+  let hotel, customer, customer2;
 
   beforeEach(() => {
 
     hotel = new Hotel(customerData, roomData, bookingData);
     customer = new Customer(customerData[0]);
+    customer2 = new Customer(customerData[2]);
 
   });
 
@@ -180,7 +181,21 @@ describe('Hotel', () => {
     hotel.addCustomers();
     hotel.addBookings();
     hotel.filterCustBookings(customer);
-    expect(customer.bookings).to.deep.equal();
+    expect(customer.bookings).to.deep.equal([
+      {
+        id: '5fwrgu4i7k55hl76z',
+        userID: 1,
+        date: '2022/02/15',
+        roomNumber: 4
+      },
+      {
+        id: '5fwrgu4i7k55hl727',
+        userID: 1,
+        date: '2022/01/20',
+        roomNumber: 22
+      }
+    ]);
+    expect(customer2.bookings).to.deep.equal([]);
   });
 
 
