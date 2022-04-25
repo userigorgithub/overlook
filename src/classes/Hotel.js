@@ -11,6 +11,7 @@ class Hotel {
     this.rooms = [];
     this.bookings = [];
     this.availRoomsByDate = [];
+    this.availRoomsByType = [];
   }
 
   addCustomers() {
@@ -69,9 +70,11 @@ class Hotel {
   //   return this.availRoomsByDate;
   // }
 
-  filterByRoomType() {
-    
-  }
+
+
+  // filterByRoomType() {
+  //
+  // }
 
 
 

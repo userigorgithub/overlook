@@ -214,9 +214,9 @@ describe('Hotel', () => {
   // });
 
 
-  // it('should have an empty array of available rooms by type at start', () => {
-  //   expect(hotel.availRoomsByType).to.deep.equal([]);
-  // });
+  it('should have an empty array of available rooms by type at start', () => {
+    expect(hotel.availRoomsByType).to.deep.equal([]);
+  });
 
 
   // it('should be able to filter rooms by room type', () => {
