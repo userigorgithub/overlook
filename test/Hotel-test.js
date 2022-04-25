@@ -198,16 +198,20 @@ describe('Hotel', () => {
     expect(customer2.bookings).to.deep.equal([]);
   });
 
+  it('should have an empty array of available rooms by date at start', () => {
+    expect(hotel.availRoomsByDate).to.deep.equal([]);
+  });
+
+  it('should be able to filter rooms by date', () => {
+
+    expect(hotel.filterByDate('2022/02/15').length).to.equal();
+  });
 
 
 
-  // it('should be able to filter rooms by date', () => {
-  //
-  //   expect(hotel.filterByDate('2022/01/10').length).to.equal();
-  // });
 
   // it('should be able to filter rooms by room type', () => {
-
+  //
   //   expect(hotel.filterByRoomType()).to.equal();
   // });
 

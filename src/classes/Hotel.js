@@ -10,6 +10,7 @@ class Hotel {
     this.customers = [];
     this.rooms = [];
     this.bookings = [];
+    this.availRoomsByDate = [];
   }
 
   addCustomers() {
@@ -25,7 +26,7 @@ class Hotel {
     this.roomData.forEach(singleRoomData => {
       let room = new Room(singleRoomData);
       this.rooms.push(room);
-      console.log(room)
+      // console.log(room)
       return room;
     })
   }
@@ -34,7 +35,7 @@ class Hotel {
     this.bookingData.forEach(singleBookingData => {
       let booking = new Booking(singleBookingData);
       this.bookings.push(booking);
-      console.log(booking);
+      // console.log(booking);
       return booking;
     })
   }
@@ -42,21 +43,29 @@ class Hotel {
   filterCustBookings(customer) {
     // let customer = new Customer(customer);
     this.bookings.forEach(booking => {
-      console.log(customer.id)
-      console.log(booking.userID)
+      // console.log(customer.id)
+      // console.log(booking.userID)
 
       if (booking.userID === customer.id) {
         customer.bookings.push(booking);
       }
     })
-    console.log(customer.bookings)
+    // console.log(customer.bookings)
     return customer.bookings;
   }
 
-
-
-  // filterByDate() {
-  //
+  // filterByDate(date) {
+  //   let changedDate = date.split('-').join('/');
+  //   console.log(changedDate)
+  //   let roomNumbers = this.bookings.reduce((acc, booking) => {
+  //     if (changedDate === booking.date) {
+  //       acc.push(booking.roomNumber)
+  //       console.log(booking.roomNumber);
+  //     }
+  //     console.log(acc)
+  //     return acc;
+  //   }, [])
+  //   return roomNumbers;
   // }
 
 }
