@@ -17,16 +17,22 @@ const password = document.querySelector(".enter-password");
 
 const loginButton = document.querySelector(".login-button");
 const searchButton = document.querySelector(".search-button");
-// const bookingButton = document.querySelector(".book-now-button");
+const bookingButton = document.querySelector(".book-now-button");
 const myBookingsButton = document.querySelector(".my-bookings-button");
 // const goBackButton = document.querySelector(".go-back-button");
 const logoutButton = document.querySelector(".logout-button");
 
 const welcomeUser = document.querySelector(".user-welcome");
-const totalSpent = document.querySelector(".total-spent");
+const totalSpending = document.querySelector(".total-spent");
+
+const dateChoice = document.querySelector(".enter-date");
+const roomChoice = document.querySelectorAll('input[name="rooms"]');
+// const roomChoice = document.querySelectorAll("rooms");
+
+const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
 
-let customersData, roomsData, bookingsData, hotel;
+let customersData, roomsData, bookingsData, hotel, date;
 
 
 
@@ -79,14 +85,62 @@ const displayUserInfo = () => {
 
 const greetUser = (customer, totalSpent) => {
   welcomeUser.innerText = `Greetings, ${customer}!`
-  totalSpent.innerText = `Total Spent, $${totalSpent}!`
+  totalSpending.innerText = `Total Spent, $${totalSpent}!`
 }
 
 
-window.addEventListener("load", loadPage(1));
+
+
+const searchResults = () => {
+  date = dateChoice.value.split('-').join('/');
+  hotel.filterByDate(dateChoice.value.split('-').join('/'))
+  console.log(roomChoice);
+
+  let selectedChoice = (Array.from(roomChoice).find(input=> input.checked));
+    if (!selectedChoice) {
+      displayAllRooms(hotel.availRoomsByDate)
+    } else {
+// console.log(typeof selectedChoice.value);
+    hotel.filterByRoomType(selectedChoice.value)
+
+    console.log(hotel.availRoomsByType);
+    displayAllRooms(hotel.availRoomsByType)
+    }
+}
+
+const displayAllRooms = (pizza) => {
+  if (pizza.length > 0) {
+    viewAvailableRooms.innerHTML = '';
+    pizza.forEach(room => {
+      viewAvailableRooms.innerHTML += `
+        <article class="room-details">
+        <h3>Room Details:</h3>
+        <p>Room number: ${room.number}</p>
+        <p>Room type: ${room.roomType}</p>
+        <p>Bidet: ${room.bidet}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Number of beds: ${room.numBeds}</p>
+        <p>Cost per night: ${room.costPerNight}</p>
+        <button class="book-now-button" value=${room.number}>Submit</button>
+        </article>
+        `
+    })
+  }
+  if (pizza.length < 1) {
+    viewAvailableRooms.innerHTML = '';
+    viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, no results!</p>`
+  }
+}
+
+const makeSubmitButton = () => {
+
+}
+
+
+window.addEventListener("load", loadPage(2));
 
 // loginButton.addEventListener('click', loginUser); //iteration3
-// searchButton.addEventListener('click', searchResults);
+searchButton.addEventListener('click', searchResults);
 // bookingButton.addEventListener('click', bookResult);
 // myBookingsButton.addEventListener('click', viewMyBookings);
 // goBackButton.addEventListener('click', returnToMainPage);
