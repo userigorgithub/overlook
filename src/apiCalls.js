@@ -1,5 +1,5 @@
 
-const errorMsg = document.querySelector('.message-error-text');
+const errorMessage = document.querySelector('.message-error-text');
 
 
 let apiCustomersData, apiRoomsData, apiBookingsData;
@@ -25,9 +25,9 @@ const fetchAll = () => {
 
 const displayError = (error) => {
   if (error.message === "Failed to fetch") {
-    errorMsg.innerText = "Ops, sorry! Try again!";
+    errorMessage.innerText = "Ops, sorry! Try again!";
   } else {
-    errorMsg.innerText = error.message;
+    errorMessage.innerText = error.message;
   }
 };
 

@@ -7,6 +7,26 @@ import Booking from "../src/classes/Booking";
 import Hotel from "../src/classes/Hotel";
 
 
+
+
+const loginPageView = document.querySelector(".login-page");
+const mainPageView = document.querySelector(".main-page");
+const myBookingsPageView = document.querySelector(".my-bookings-page");
+
+const username = document.querySelector(".enter-username");
+const password = document.querySelector(".enter-password");
+
+const loginButton = document.querySelector(".login-button");
+const myBookingsButton = document.querySelector(".my-bookings-button");
+const logoutButton = document.querySelector(".logout-button");
+const searchButton = document.querySelector(".search-button");
+// const bookingButton = document.querySelector(".");
+
+const welcomeUser = document.querySelector(".user-welcome");
+const totalSpent = document.querySelector(".total-spent");
+
+
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
 // console.log('This is the JavaScript entry file - your code begins here.');
