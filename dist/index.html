@@ -44,9 +44,9 @@
         <section class="user-experience-area">
           <p class="message-error-text">Book Your Stay Now?</p>
 
-          <form class="booking-form">
+          <form class="booking-form" onsubmit="return false">
             <label for="book-date" class="book-date">Select Date:</label>
-            <label for="date-time"><input class="enter-date" type="date" value="2022-04-10" id="date" required></label>
+            <label for="date-time"><input class="enter-date" type="date" value="2022-02-10" min="2021-01-01" max="2022-12-31" id="date" required></label>
             <label for="room-type" class="room-type">Select Room Type:</label>
             <label for="suite"><input class="suite" type="radio" name="rooms" value="suite">Suite</label>
             <label for="junior-suite"><input class="junior-suite" type="radio" name="rooms" value="junior suite">Junior Suite</label>
@@ -57,9 +57,9 @@
         </section>
 
 
-        <section class="dashboard-area">
+        <section class="view-avail-rooms-area">
           <!-- View filtered results -->
-          <p class="view-data">Testingssssssssss</p>
+          <!-- <p class="view-data">Testingssssssssss</p> -->
         </section>
 
       </section>

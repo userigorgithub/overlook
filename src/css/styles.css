@@ -127,7 +127,7 @@ body {
 }
 
 
-.dashboard-area {
+.view-avail-rooms-area {
   background-color: #FFF;
   display: flex;
   flex-wrap: wrap;
@@ -135,6 +135,12 @@ body {
   margin-left: 1vw;
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  /* height: 30vh; */
+
+}
+
+.room-details {
+  border: solid 3px black;
 }
 
 
