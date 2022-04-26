@@ -27,6 +27,14 @@ const totalSpent = document.querySelector(".total-spent");
 
 
 
+const showElement = domElement => {
+  domElement.forEach(element => element.classList.remove("hidden"));
+};
+
+const hideElement = domElement => {
+  domElement.forEach(element => element.classList.add("hidden"));
+};
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
 // console.log('This is the JavaScript entry file - your code begins here.');
