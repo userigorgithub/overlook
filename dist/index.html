@@ -11,7 +11,7 @@
     <!-- <section class="login-page">
       <section class="title-message">
         <h1 class="login-page-title">Overlook Hotel</h1>
-        <p class="login-error-text">Please Login</p>
+        <p class="message-error-text">Please Login</p>
       </section>
       <section class="login-area">
         <form class="login-form">
@@ -29,13 +29,13 @@
       <section class="top-section">
         <section class="user-name-display">
           <h1 class="user-welcome">Greetings, User!</h1>
-          <h2 class="total-spent">Your Spending, $$$!</h2>
+          <h2 class="total-spent">Total Spent, $0!</h2>
         </section>
         <section class="app-name-display">
           <h3 class="app-welcome">Welcome to Overlook Hotel!</h3>
         </section>
         <section class="button-display">
-          <h4 class="today-date" id="todayDate">Display Date</h4>
+          <button class="my-bookings-button" id="myBookingsButton">My Bookings</button>
           <button class="logout-button" id="logoutButton">Logout</button>
         </section>
       </section>
@@ -44,9 +44,9 @@
         <section class="user-experience-area">
           <p class="message-error-text">Book Your Stay Now?</p>
 
-          <form class="booking-form">
+          <form class="booking-form" onsubmit="return false">
             <label for="book-date" class="book-date">Select Date:</label>
-            <label for="date-time"><input class="enter-date" type="date" value="2022-04-10" id="date" required></label>
+            <label for="date-time"><input class="enter-date" type="date" value="2022-02-10" min="2021-01-01" max="2022-12-31" id="date" required></label>
             <label for="room-type" class="room-type">Select Room Type:</label>
             <label for="suite"><input class="suite" type="radio" name="rooms" value="suite">Suite</label>
             <label for="junior-suite"><input class="junior-suite" type="radio" name="rooms" value="junior suite">Junior Suite</label>
@@ -54,16 +54,21 @@
             <label for="single-room"><input class="single-room" type="radio" name="rooms" value="single room">Single Room</label>
             <button class="search-button" type="submit" id="searchBookingButton">Search</button>
           </form>
-
         </section>
 
 
-        <section class="dashboard-area">
-          <!-- TBD -->
-          <p class="view-data">Testingssssssssss</p>
+        <section class="view-avail-rooms-area">
+          <!-- View filtered results -->
+          <!-- <p class="view-data">Testingssssssssss</p> -->
         </section>
 
       </section>
+
+      <section class="my-bookings-page">
+        <!-- <p class="view-data">Testingssssssssss</p> -->
+        <!-- View my bookings -->
+      </section>
+
     </section>
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
