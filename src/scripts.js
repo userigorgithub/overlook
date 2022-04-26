@@ -1,6 +1,6 @@
 import './css/styles.css';
 // import apiCalls from './apiCalls';
-import {fetchAll, apiCustomersData, apiRoomsData, apiBookingsData, displayError} from './apiCalls';
+import {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError} from './apiCalls';
 import Customer from "../src/classes/Customer";
 import Room from "../src/classes/Room";
 import Booking from "../src/classes/Booking";
@@ -38,32 +38,57 @@ const hideElement = domElement => {
   domElement.forEach(element => element.classList.add("hidden"));
 };
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-// console.log('This is the JavaScript entry file - your code begins here.');
 
-
-
-
-const loadPage = () => {
+const loadPage = (userID) => {
   fetchAll();
-  Promise.all([apiCustomersData, apiRoomsData, apiBookingsData])
+  Promise.all([apiCustomersData, apiRoomsData, apiBookingsData, fetchSingleUser(userID)])
+  // Promise.all([fetchData('customers'), fetchData('rooms'), fetchData('bookings'), fetchSingleUser(userID)])
+
+
+    // .then(data => {
+    //   hotel = new Hotel(data[0].customers, data[1].rooms, data[2].bookings)
+    //   hotel.filterCustBookings(data[3]);
+    //   hotel.calculateTotal();
+    //   displayUserInfo();
+    // })
+
+    // .then(data => {
+    //   console.log(data)
+    // })
     .then((data) => displayPage(data));
+
 };
 
 const displayPage = (data) => {
-  // customersData = data[0];
-  // roomsData = data[1];
-  // bookingsData = data[2];
-  // hotel = new Hotel(customersData, roomsData, bookingsData)
-  hotel = new Hotel(data[0], roomsData, bookingsData)
+  // hotel = new Hotel(data[0].customers, data[1].rooms, data[2].bookings)
+  // hotel = new Hotel(data[0], data[1], data[2])
+  console.log(data)
+  customersData = data[0].customers;
+  roomsData = data[1].rooms;
+  bookingsData = data[2].bookings;
+  hotel = new Hotel(customersData, roomsData, bookingsData)
+  hotel.filterCustBookings(data[3]);
+  hotel.calculateTotal();
+  displayUserInfo();
 }
 
 
-window.addEventListener("load", event => loadPage());
+const displayUserInfo = () => {
+  greetUser(hotel.singleCustomer.name, hotel.singleCustomer.totalSpent)
+}
+
+const greetUser = (customer, totalSpent) => {
+  welcomeUser.innerText = `Greetings, ${customer}!`
+  totalSpent.innerText = `Total Spent, $${totalSpent}!`
+}
+
+
+window.addEventListener("load", loadPage(1));
 
 // loginButton.addEventListener('click', loginUser); //iteration3
 // searchButton.addEventListener('click', searchResults);
 // bookingButton.addEventListener('click', bookResult);
 // myBookingsButton.addEventListener('click', viewMyBookings);
 // goBackButton.addEventListener('click', returnToMainPage);
+
+export default hotel; //don't need
