@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import customerData from './Customer-data';
 import Customer from '../src/classes/Customer';
 
-
 describe('Customer', () => {
 
   let customer, customer2;
@@ -45,9 +44,5 @@ describe('Customer', () => {
   it('should have a $0 total spent before booking anything', () => {
     expect(customer.totalSpent).to.equal(0);
     expect(customer2.totalSpent).to.equal(0);
-  });
-
-  it('should be able to add money after customer\'s booking', () => {
-    //COMING SOON
   });
 });

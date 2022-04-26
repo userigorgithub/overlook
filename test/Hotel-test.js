@@ -7,14 +7,12 @@ import Customer from '../src/classes/Customer';
 
 describe('Hotel', () => {
 
-  let hotel, customer, customer2;
+  let hotel, customer;
 
   beforeEach(() => {
 
     hotel = new Hotel(customerData, roomData, bookingData);
     customer = new Customer(customerData[0]);
-    // console.log(customerData[2]);
-    customer2 = new Customer(customerData[2]);
 
   });
 
@@ -151,38 +149,41 @@ describe('Hotel', () => {
     ]);
   });
 
-  it('should have an empty array of customers at start', () => {
-    expect(hotel.customers).to.deep.equal([]);
+  it('should have an empty array of available rooms by date at start', () => {
+    expect(hotel.availRoomsByDate).to.deep.equal([]);
   });
 
-  it('should have an empty array of rooms at start', () => {
-    expect(hotel.rooms).to.deep.equal([]);
+  it('should be able to filter rooms by date', () => {
+    expect(hotel.filterByDate('2022/02/15').length).to.equal(1);
   });
 
-  it('should have an empty array of bookings at start', () => {
-    expect(hotel.bookings).to.deep.equal([]);
+  it('should not be able to filter rooms for unavailable date', () => {
+    expect(hotel.filterByDate('2022/01/01').length).to.equal(0);
   });
 
-  it('should be able to add customers', () => {
-    hotel.addCustomers();
-    expect(hotel.customers.length).to.equal(3);
+  it('should have an empty array of available rooms by type at start', () => {
+    expect(hotel.availRoomsByType).to.deep.equal([]);
   });
 
-  it('should be able to add rooms', () => {
-    hotel.addRooms();
-    expect(hotel.rooms.length).to.equal(10);
+  it('should be able to filter rooms by room type', () => {
+    hotel.filterByDate('2022/02/15');
+    hotel.filterByRoomType('single room');
+    expect(hotel.availRoomsByType.length).to.equal(1);
   });
 
-  it('should be able to add bookings', () => {
-    hotel.addBookings();
-    expect(hotel.bookings.length).to.equal(3);
+  it('should not be able to filter rooms for unavailable room type', () => {
+    hotel.filterByDate('2022/02/15');
+    hotel.filterByRoomType('suite');
+    expect(hotel.availRoomsByType.length).to.equal(0);
   });
 
-  it('should be able to filter customer\'s bookings by ID', () => {
-    hotel.addCustomers();
-    hotel.addBookings();
+  it('should have a variable single customer', () => {
+    expect(hotel.singleCustomer).to.equal(undefined);
+  });
+
+  it('should be able to filter customer\'s bookings', () => {
     hotel.filterCustBookings(customer);
-    expect(customer.bookings).to.deep.equal([
+    expect(hotel.singleCustomer.bookings).to.deep.equal([
       {
         id: '5fwrgu4i7k55hl76z',
         userID: 1,
@@ -196,43 +197,11 @@ describe('Hotel', () => {
         roomNumber: 22
       }
     ]);
-    expect(customer2.bookings).to.deep.equal([]);
   });
-
-  it('should have an empty array of available rooms by date at start', () => {
-    expect(hotel.availRoomsByDate).to.deep.equal([]);
-  });
-
-
-  // it('should be able to filter rooms by date', () => {
-  //   hotel.addCustomers();
-  //   hotel.addRooms();
-  //   hotel.addBookings();
-  //   hotel.filterCustBookings(customer);
-  //   hotel.filterByDate('2022/02/25')
-  //   expect(hotel.availRoomsByDate).to.equal(87);
-  // });
-
-
-  it('should have an empty array of available rooms by type at start', () => {
-    expect(hotel.availRoomsByType).to.deep.equal([]);
-  });
-
-
-  // it('should be able to filter rooms by room type', () => {
-  //
-  //   expect(hotel.filterByRoomType()).to.equal();
-  // });
-
 
   it('should be able to calculate all customer\'s bookings', () => {
-    hotel.addCustomers();
-    hotel.addRooms();
-    hotel.addBookings();
-    hotel.filterCustBookings(customer2);
-    expect(hotel.calculateTotal()).to.equal('927.08');
-    //adds rooms 4 and 10 for customer[0]?
+    hotel.filterCustBookings(customer);
+    hotel.calculateTotal();
+    expect(hotel.singleCustomer.totalSpent).to.equal('429.44');
   });
-
-
 });

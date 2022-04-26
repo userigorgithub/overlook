@@ -7,97 +7,63 @@ class Hotel {
     this.customerData = customerData;
     this.roomData = roomData;
     this.bookingData = bookingData;
-    this.customers = [];
-    this.rooms = [];
-    this.bookings = [];
     this.availRoomsByDate = [];
     this.availRoomsByType = [];
+    this.singleCustomer;
   }
 
-  addCustomers() {
-    this.customerData.forEach(singleCustomerData => {
-      let customer = new Customer(singleCustomerData);
-      this.customers.push(customer);
-      // console.log(customer)
-      return customer;
-    })
+  filterByDate(date) {
+    let changedDate = date.split('-').join('/');
+    // console.log(changedDate);
+    // console.log(this.bookingData);
+    let roomNumbers = this.bookingData.reduce((acc, booking) => {
+      if (changedDate === booking.date) {
+        acc.push(booking.roomNumber)
+        // console.log(booking.roomNumber);
+      }
+      // console.log(acc)
+      return acc;
+    }, [])
+    // !roomNumbers.includes.........? returns all remaining rooms
+    this.availRoomsByDate = this.roomData.filter(room => roomNumbers.includes(room.number))
+    // console.log(this.availRoomsByDate);
+    return this.availRoomsByDate;
   }
 
-  addRooms() {
-    this.roomData.forEach(singleRoomData => {
-      let room = new Room(singleRoomData);
-      this.rooms.push(room);
-      // console.log(room)
-      return room;
-    })
-  }
-
-  addBookings() {
-    this.bookingData.forEach(singleBookingData => {
-      let booking = new Booking(singleBookingData);
-      this.bookings.push(booking);
-      // console.log(booking);
-      return booking;
+  filterByRoomType(type) {
+    //filter or forEach?
+    this.availRoomsByDate.filter(room => {
+      if (room.roomType === type) {
+        this.availRoomsByType.push(room)
+        // console.log(this.availRoomsByType);
+      }
     })
   }
 
   filterCustBookings(customer) {
-    this.bookings.forEach(booking => {
-      // console.log(customer.id)
-      // console.log(booking.userID)
-      if (booking.userID === customer.id) {
-        customer.bookings.push(booking);
+    this.singleCustomer = new Customer(customer);
+    this.bookingData.filter(booking => {
+      if (this.singleCustomer.id === booking.userID) {
+        this.singleCustomer.bookings.push(booking)
+        // console.log(booking);
       }
     })
-    // console.log(customer.bookings)
-    return customer.bookings;
   }
 
-
-
-  // filterByDate(date) {
-  //   let changedDate = date.split('-').join('/');
-  //   // console.log(changedDate);
-  //   let roomNumbers = this.bookings.reduce((acc, booking) => {
-  //     if (changedDate === booking.date) {
-  //       acc.push(booking.roomNumber)
-  //       // console.log(booking.roomNumber);
-  //     }
-  //     console.log(acc)
-  //     return acc;
-  //   }, [])
-  //   this.availRoomsByDate = this.rooms.filter(room => !roomNumbers.includes(room.number))
-  //   return this.availRoomsByDate;
-  // }
-
-
-
-  // filterByRoomType() {
-  //
-  // }
-
-
-
   calculateTotal() {
-    let total = this.bookings.reduce((acc, booking) => {
-      this.rooms.forEach(room => {
+    this.singleCustomer.totalSpent = this.singleCustomer.bookings.reduce((acc, booking) => {
+      this.roomData.forEach(room => {
+        // console.log(room);
         if (room.number === booking.roomNumber) {
           acc += room.costPerNight;
         }
       })
-      console.log(acc);
+      console.log(acc); //room 22 isn't in the room data!
       return acc;
     }, 0).toFixed(2);
-    return total;
+    return this.singleCustomer;
   }
-
 
 }
 
 export default Hotel;
-
-
-//filterByDate
-//filterByRoomType
-
-//calculateTotal here or in customer class?

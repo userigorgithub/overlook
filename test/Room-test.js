@@ -9,7 +9,7 @@ describe('Room', () => {
   beforeEach(() => {
 
     room = new Room(roomData[0]);
-    room2 = new Room(roomData[3]);
+    room2 = new Room(roomData[2]);
 
   });
 
@@ -23,7 +23,7 @@ describe('Room', () => {
 
   it('should have a room number', () => {
   	expect(room.number).to.equal(1);
-    expect(room2.number).to.equal(4);
+    expect(room2.number).to.equal(3);
   });
 
   it('should have a room type', () => {
@@ -38,7 +38,7 @@ describe('Room', () => {
 
   it('should have a bed size', () => {
   	expect(room.bedSize).to.equal('queen');
-    expect(room2.bedSize).to.equal('queen');
+    expect(room2.bedSize).to.equal('king');
   });
 
   it('should have a number of beds', () => {
@@ -48,6 +48,6 @@ describe('Room', () => {
 
   it('should have a cost per night', () => {
   	expect(room.costPerNight).to.equal(358.4);
-    expect(room2.costPerNight).to.equal(429.44);
+    expect(room2.costPerNight).to.equal(491.14);
   });
 });
