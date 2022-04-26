@@ -1,6 +1,6 @@
 import './css/styles.css';
 // import apiCalls from './apiCalls';
-import {fetchAll, apiCustomersData, apiRoomsData, apiBookingsData} from './apiCalls';
+import {fetchAll, apiCustomersData, apiRoomsData, apiBookingsData, displayError} from './apiCalls';
 import Customer from "../src/classes/Customer";
 import Room from "../src/classes/Room";
 import Booking from "../src/classes/Booking";
@@ -26,6 +26,9 @@ const welcomeUser = document.querySelector(".user-welcome");
 const totalSpent = document.querySelector(".total-spent");
 
 
+let customersData, roomsData, bookingsData, hotel;
+
+
 
 const showElement = domElement => {
   domElement.forEach(element => element.classList.remove("hidden"));
@@ -40,7 +43,6 @@ const hideElement = domElement => {
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 
-let customersData, roomsData, bookingsData, hotel, currentCustomer;
 
 
 const loadPage = () => {
@@ -50,12 +52,11 @@ const loadPage = () => {
 };
 
 const displayPage = (data) => {
-  customersData = data[0];
-  roomsData = data[1];
-  bookingsData = data[2];
-  hotel = new Hotel(customersData, roomsData, bookingsData)
-  // currentCustomer = new Customer()
-
+  // customersData = data[0];
+  // roomsData = data[1];
+  // bookingsData = data[2];
+  // hotel = new Hotel(customersData, roomsData, bookingsData)
+  hotel = new Hotel(data[0], roomsData, bookingsData)
 }
 
 
