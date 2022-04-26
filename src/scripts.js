@@ -8,7 +8,6 @@ import Hotel from "../src/classes/Hotel";
 
 
 
-
 const loginPageView = document.querySelector(".login-page");
 const mainPageView = document.querySelector(".main-page");
 const myBookingsPageView = document.querySelector(".my-bookings-page");
@@ -17,10 +16,11 @@ const username = document.querySelector(".enter-username");
 const password = document.querySelector(".enter-password");
 
 const loginButton = document.querySelector(".login-button");
-const myBookingsButton = document.querySelector(".my-bookings-button");
-const logoutButton = document.querySelector(".logout-button");
 const searchButton = document.querySelector(".search-button");
-// const bookingButton = document.querySelector(".");
+// const bookingButton = document.querySelector(".book-now-button");
+const myBookingsButton = document.querySelector(".my-bookings-button");
+// const goBackButton = document.querySelector(".go-back-button");
+const logoutButton = document.querySelector(".logout-button");
 
 const welcomeUser = document.querySelector(".user-welcome");
 const totalSpent = document.querySelector(".total-spent");
@@ -52,3 +52,9 @@ const displayPage = (data) => {
 
 
 window.addEventListener("load", event => loadPage());
+
+// loginButton.addEventListener('click', loginUser); //iteration3
+// searchButton.addEventListener('click', searchResults);
+// bookingButton.addEventListener('click', bookResult);
+// myBookingsButton.addEventListener('click', viewMyBookings);
+// goBackButton.addEventListener('click', returnToMainPage);
