@@ -78,7 +78,7 @@ body {
   align-items: center;
 }
 
-.user-welcome, .total-spent, .today-date {
+.user-welcome, .total-spent {
   font-size: 22px;
 }
 
@@ -86,7 +86,11 @@ body {
   font-size: 25px;
 }
 
-.logout-button {
+.button-display {
+  justify-content: space-evenly;
+}
+
+.my-bookings-button, .logout-button {
   cursor: pointer;
   height: 4vh;
   width: 15vh;
