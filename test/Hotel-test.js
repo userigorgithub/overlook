@@ -157,13 +157,13 @@ describe('Hotel', () => {
     expect(hotel.filterByDate('2022/02/15').length).to.equal(1);
   });
 
-  //SAD path, unavail date
-
+  it('should not be able to filter rooms for unavailable date', () => {
+    expect(hotel.filterByDate('2022/01/01').length).to.equal(0);
+  });
 
   it('should have an empty array of available rooms by type at start', () => {
     expect(hotel.availRoomsByType).to.deep.equal([]);
   });
-
 
   it('should be able to filter rooms by room type', () => {
     hotel.filterByDate('2022/02/15');
@@ -171,8 +171,11 @@ describe('Hotel', () => {
     expect(hotel.availRoomsByType.length).to.equal(1);
   });
 
-  //SAD path, wrong room type
-
+  it('should not be able to filter rooms for unavailable room type', () => {
+    hotel.filterByDate('2022/02/15');
+    hotel.filterByRoomType('suite');
+    expect(hotel.availRoomsByType.length).to.equal(0);
+  });
 
   it('should have a variable single customer', () => {
     expect(hotel.singleCustomer).to.equal(undefined);
