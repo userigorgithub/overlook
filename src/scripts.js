@@ -58,6 +58,8 @@ const displayPage = (data) => {
 }
 
 const displayUserInfo = () => {
+  hideElement([loginPageView])
+  showElement([mainPageView])
   greetUser(hotel.singleCustomer.name, hotel.singleCustomer.totalSpent)
 }
 
@@ -69,7 +71,7 @@ const greetUser = (customer, totalSpent) => {
 const searchResults = () => {
   date = dateChoice.value.split('-').join('/');
   hotel.filterByDate(dateChoice.value.split('-').join('/'))
-  let selectedChoice = (Array.from(roomChoice).find(input=> input.checked));
+  let selectedChoice = (Array.from(roomChoice).find(input => input.checked));
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
       makeSubmitButton();
@@ -81,7 +83,6 @@ const searchResults = () => {
 }
 
 const displayAllRooms = (freeRooms) => {
-  console.log("freeroms", freeRooms);
   if (freeRooms.length > 0) {
     viewAvailableRooms.innerHTML = '';
     freeRooms.forEach(room => {
@@ -109,14 +110,12 @@ const makeSubmitButton = () => {
   const bookingButton = document.querySelectorAll("book-now-button");
   bookingButton.forEach(button => {
     button.addEventListener('click', event => {
-      console.log('it was clicked');
       bookRoom(event.terget.value)
     })
   })
 }
 
 viewAvailableRooms.addEventListener('click', event => {
-  console.log('it was clicked', event.target.value);
   bookRoom(event.target.value)
 })
 
@@ -141,10 +140,10 @@ const bookRoom = (roomNumber) => {
     })
 }
 
-const viewMyBookings = () => { //hide and show elements
+const viewMyBookings = () => {
+  // hideElement([mainPageView, loginPageView])
+  // showElement([myBookingsPageView])
   displayAllBookedRooms(hotel.singleCustomer.bookings)
-  hideElement([mainPageView])
-  showElement([myBookingsPageView])
 }
 
 const displayAllBookedRooms = (bookedRooms) => {
