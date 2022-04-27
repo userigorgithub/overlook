@@ -143,6 +143,23 @@ const makeSubmitButton = () => {
   })
 }
 
+const bookRoom = (event) => {
+  let data = {
+    userID: parseInt(hotel.singleCustomer.id),
+    date: date,
+    roomNumber: parseInt(event.target.value)
+  }
+  postData(data)
+    .then(data => {
+      loadPage(hotel.singleCustomer.id)
+      viewAvailableRooms.innerHTML = '';
+      viewAvailableRooms.innerHTML += `<p class="message-error-text">Successfully booked!</p>`
+    })
+    .catch(error => {
+      viewAvailableRooms.innerHTML = '';
+      viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
+    })
+}
 
 
 /////////////////////////
