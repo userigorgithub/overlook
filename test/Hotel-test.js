@@ -154,11 +154,8 @@ describe('Hotel', () => {
   });
 
   it('should be able to filter rooms by date', () => {
-    expect(hotel.filterByDate('2022/02/15').length).to.equal(1);
-  });
-
-  it('should not be able to filter rooms for unavailable date', () => {
-    expect(hotel.filterByDate('2022/01/01').length).to.equal(0);
+    expect(hotel.filterByDate('2022/02/15').length).to.equal(9);
+    expect(hotel.filterByDate('2022/05/15').length).to.equal(10);
   });
 
   it('should have an empty array of available rooms by type at start', () => {
@@ -168,12 +165,12 @@ describe('Hotel', () => {
   it('should be able to filter rooms by room type', () => {
     hotel.filterByDate('2022/02/15');
     hotel.filterByRoomType('single room');
-    expect(hotel.availRoomsByType.length).to.equal(1);
+    expect(hotel.availRoomsByType.length).to.equal(4);
   });
 
   it('should not be able to filter rooms for unavailable room type', () => {
-    hotel.filterByDate('2022/02/15');
-    hotel.filterByRoomType('suite');
+    hotel.filterByDate('2022/02/10');
+    hotel.filterByRoomType('single-room');
     expect(hotel.availRoomsByType.length).to.equal(0);
   });
 
