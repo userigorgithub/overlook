@@ -1,14 +1,11 @@
-//ACCESSIBILITY CHECK 100%
-
 import './css/styles.css';
-// import apiCalls from './apiCalls';
 import {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError} from './apiCalls';
 import Customer from "../src/classes/Customer";
 import Room from "../src/classes/Room";
 import Booking from "../src/classes/Booking";
 import Hotel from "../src/classes/Hotel";
 
-
+//----------Query Selectors----------//
 
 const loginPageView = document.querySelector(".login-page");
 const mainPageView = document.querySelector(".main-page");
@@ -19,7 +16,7 @@ const password = document.querySelector(".enter-password");
 
 const loginButton = document.querySelector(".login-button");
 const searchButton = document.querySelector(".search-button");
-const myBookingsButton = document.querySelector(".my-bookings-button");// check bookings
+const myBookingsButton = document.querySelector(".my-bookings-button");
 // const goBackButton = document.querySelector(".go-back-button");
 // const logoutButton = document.querySelector(".logout-button");
 
@@ -30,10 +27,11 @@ const dateChoice = document.querySelector(".enter-date");
 const roomChoice = document.querySelectorAll('input[name="rooms"]');
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
+//---------Global Variables----------//
 
 let customersData, roomsData, bookingsData, hotel, date;
 
-
+//----------Functions----------//
 
 const showElement = domElement => {
   domElement.forEach(element => element.classList.remove("hidden"));
@@ -43,31 +41,13 @@ const hideElement = domElement => {
   domElement.forEach(element => element.classList.add("hidden"));
 };
 
-
 const loadPage = (userID) => {
   fetchAll();
   Promise.all([apiCustomersData, apiRoomsData, apiBookingsData, fetchSingleUser(userID)])
-  // Promise.all([fetchData('customers'), fetchData('rooms'), fetchData('bookings'), fetchSingleUser(userID)])
-
-
-    // .then(data => {
-    //   hotel = new Hotel(data[0].customers, data[1].rooms, data[2].bookings)
-    //   hotel.filterCustBookings(data[3]);
-    //   hotel.calculateTotal();
-    //   displayUserInfo();
-    // })
-
-    // .then(data => {
-    //   console.log(data)
-    // })
     .then((data) => displayPage(data));
-
 };
 
 const displayPage = (data) => {
-  // hotel = new Hotel(data[0].customers, data[1].rooms, data[2].bookings)
-  // hotel = new Hotel(data[0], data[1], data[2])
-  console.log(data)
   customersData = data[0].customers;
   roomsData = data[1].rooms;
   bookingsData = data[2].bookings;
@@ -76,7 +56,6 @@ const displayPage = (data) => {
   hotel.calculateTotal();
   displayUserInfo();
 }
-
 
 const displayUserInfo = () => {
   greetUser(hotel.singleCustomer.name, hotel.singleCustomer.totalSpent)
@@ -87,25 +66,17 @@ const greetUser = (customer, totalSpent) => {
   totalSpending.innerText = `Total Spent, $${totalSpent}!`
 }
 
-
-
-
 const searchResults = () => {
   date = dateChoice.value.split('-').join('/');
   hotel.filterByDate(dateChoice.value.split('-').join('/'))
-  // console.log(roomChoice);
-
   let selectedChoice = (Array.from(roomChoice).find(input=> input.checked));
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
       makeSubmitButton();
     } else {
-// console.log(typeof selectedChoice.value);
     hotel.filterByRoomType(selectedChoice.value)
-
-    // console.log(hotel.availRoomsByType);
     displayAllRooms(hotel.availRoomsByType)
-    makeSubmitButton(); // <---call it here? or above---
+    makeSubmitButton();
     }
 }
 
@@ -134,9 +105,6 @@ const displayAllRooms = (freeRooms) => {
   }
 }
 
-
-///////////////////////////////////////
-
 const makeSubmitButton = () => {
   const bookingButton = document.querySelectorAll("book-now-button");
   bookingButton.forEach(button => {
@@ -151,7 +119,6 @@ viewAvailableRooms.addEventListener('click', event => {
   console.log('it was clicked', event.target.value);
   bookRoom(event.target.value)
 })
-//////////
 
 const bookRoom = (roomNumber) => {
   let data = {
@@ -163,11 +130,8 @@ const bookRoom = (roomNumber) => {
     hotel.singleCustomer.bookings.push(data.newBooking)
     hotel.bookingData.push(data.newBooking)
     hotel.calculateTotal()
-      console.log("161", data);
       loadPage(hotel.singleCustomer.id)
-      // let bookinggg = data.newBooking;
       displayAllBookedRooms(hotel.singleCustomer.bookings)
-      console.log(data.newBooking);
       viewAvailableRooms.innerHTML = '';
       viewAvailableRooms.innerHTML += `<p class="message-error-text">Successfully booked!</p>`
     })
@@ -184,7 +148,6 @@ const viewMyBookings = () => { //hide and show elements
 }
 
 const displayAllBookedRooms = (bookedRooms) => {
-  // console.log('bookedRooms', bookedRooms)
   myBookingsPageView.innerHTML = '';
   bookedRooms.forEach(booking => {
     myBookingsPageView.innerHTML += `
@@ -210,9 +173,9 @@ const getUserPassword = () => {
   }
 }
 
+//----------Event Listeners----------//
 
-window.addEventListener("load", loadPage(5));
-
+// window.addEventListener("load", loadPage(5));
 loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
 myBookingsButton.addEventListener('click', viewMyBookings);
