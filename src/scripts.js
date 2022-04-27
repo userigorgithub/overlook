@@ -96,14 +96,15 @@ const searchResults = () => {
   let selectedChoice = (Array.from(roomChoice).find(input=> input.checked));
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
+      makeSubmitButton();
     } else {
 // console.log(typeof selectedChoice.value);
     hotel.filterByRoomType(selectedChoice.value)
 
     // console.log(hotel.availRoomsByType);
     displayAllRooms(hotel.availRoomsByType)
+    makeSubmitButton(); // <---call it here? or above---
     }
-    makeSubmitButton(); // <---call it here? or above------------------------
 }
 
 const displayAllRooms = (freeRooms) => {
@@ -134,20 +135,26 @@ const displayAllRooms = (freeRooms) => {
 ///////////////////////////////////////
 
 const makeSubmitButton = () => {
-  const bookingButton = document.querySelector(".book-now-button");
+  const bookingButton = document.querySelectorAll("book-now-button");
   bookingButton.forEach(button => {
     button.addEventListener('click', event => {
       console.log('it was clicked');
-      bookRoom(event)
+      bookRoom(event.terget.value)
     })
   })
 }
 
-const bookRoom = (event) => {
+viewAvailableRooms.addEventListener('click', event => {
+  console.log('it was clicked', event.target.value);
+  bookRoom(event.target.value)
+})
+//////////
+
+const bookRoom = (roomNumber) => {
   let data = {
     userID: parseInt(hotel.singleCustomer.id),
     date: date,
-    roomNumber: parseInt(event.target.value)
+    roomNumber: parseInt(roomNumber)
   }
   postData(data)
     .then(data => {
@@ -161,15 +168,22 @@ const bookRoom = (event) => {
     })
 }
 
+///////////
 
-/////////////////////////
+const viewMyBookings = () => {
+  displayAllBookedRooms(hotel.singleCustomer.bookings)
+}
+
+
+
+//////////////////////////////////////////
 
 window.addEventListener("load", loadPage(2));
 
 // loginButton.addEventListener('click', loginUser); //iteration3
 searchButton.addEventListener('click', searchResults);
 // bookingButton.addEventListener('click', bookResult); //within function!!!
-// myBookingsButton.addEventListener('click', viewMyBookings);
+myBookingsButton.addEventListener('click', viewMyBookings);
 // goBackButton.addEventListener('click', returnToMainPage);
 
 export default hotel; //don't need
