@@ -1,3 +1,5 @@
+//ACCESSIBILITY CHECK 100%
+
 import './css/styles.css';
 // import apiCalls from './apiCalls';
 import {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError} from './apiCalls';
