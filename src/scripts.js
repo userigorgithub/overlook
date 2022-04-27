@@ -211,7 +211,7 @@ const getUserPassword = () => {
 }
 
 
-window.addEventListener("load", loadPage(2));
+window.addEventListener("load", loadPage(5));
 
 loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
