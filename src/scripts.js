@@ -169,13 +169,11 @@ const bookRoom = (roomNumber) => {
       viewAvailableRooms.innerHTML = '';
       viewAvailableRooms.innerHTML += `<p class="message-error-text">Successfully booked!</p>`
     })
-    // .catch(error => {
-    //   viewAvailableRooms.innerHTML = '';
-    //   viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
-    // })
+    .catch(error => {
+      viewAvailableRooms.innerHTML = '';
+      viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
+    })
 }
-
-///////////
 
 const viewMyBookings = () => { //hide and show elements
   displayAllBookedRooms(hotel.singleCustomer.bookings)
@@ -197,15 +195,24 @@ const displayAllBookedRooms = (bookedRooms) => {
   })
 }
 
-//////////////////////////////////////////
+const getUserID = () => {
+  return parseInt(username.value.substring(8));
+}
+
+const getUserPassword = () => {
+  event.preventDefault();
+  if (password.value === "overlook2021" && getUserID() < 51) {
+    loadPage(getUserID())
+  } else {
+    displayError()
+  }
+}
+
 
 window.addEventListener("load", loadPage(2));
 
-// loginButton.addEventListener('click', loginUser); //iteration3
+loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
-// bookingButton.addEventListener('click', bookResult); //within function!!!
 myBookingsButton.addEventListener('click', viewMyBookings);
 // goBackButton.addEventListener('click', returnToMainPage);
 // logoutButton.addEventListener('click', returnToLoginPage);
-
-// export default hotel; //don't need
