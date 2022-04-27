@@ -34,12 +34,12 @@ class Hotel {
     this.availRoomsByType = [];
     //filter or forEach?
     this.availRoomsByDate.filter(room => {
-      console.log(room);
+      // console.log(room);
       if (room.roomType === type) {
-        console.log("cond is weork");
+        // console.log("cond is weork");
         this.availRoomsByType.push(room)
         // return this.availRoomsByType
-        console.log(this.availRoomsByType);
+        // console.log(this.availRoomsByType);
       }
     })
     // return this.availRoomsByType

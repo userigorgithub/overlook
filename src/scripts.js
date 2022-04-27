@@ -17,18 +17,15 @@ const password = document.querySelector(".enter-password");
 
 const loginButton = document.querySelector(".login-button");
 const searchButton = document.querySelector(".search-button");
-const bookingButton = document.querySelector(".book-now-button");
-const myBookingsButton = document.querySelector(".my-bookings-button");
+const myBookingsButton = document.querySelector(".my-bookings-button");// check bookings
 // const goBackButton = document.querySelector(".go-back-button");
-const logoutButton = document.querySelector(".logout-button");
+// const logoutButton = document.querySelector(".logout-button");
 
 const welcomeUser = document.querySelector(".user-welcome");
 const totalSpending = document.querySelector(".total-spent");
 
 const dateChoice = document.querySelector(".enter-date");
 const roomChoice = document.querySelectorAll('input[name="rooms"]');
-// const roomChoice = document.querySelectorAll("rooms");
-
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
 
@@ -94,24 +91,27 @@ const greetUser = (customer, totalSpent) => {
 const searchResults = () => {
   date = dateChoice.value.split('-').join('/');
   hotel.filterByDate(dateChoice.value.split('-').join('/'))
-  console.log(roomChoice);
+  // console.log(roomChoice);
 
   let selectedChoice = (Array.from(roomChoice).find(input=> input.checked));
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
+      makeSubmitButton();
     } else {
 // console.log(typeof selectedChoice.value);
     hotel.filterByRoomType(selectedChoice.value)
 
-    console.log(hotel.availRoomsByType);
+    // console.log(hotel.availRoomsByType);
     displayAllRooms(hotel.availRoomsByType)
+    makeSubmitButton(); // <---call it here? or above---
     }
 }
 
-const displayAllRooms = (pizza) => {
-  if (pizza.length > 0) {
+const displayAllRooms = (freeRooms) => {
+  console.log("freeroms", freeRooms);
+  if (freeRooms.length > 0) {
     viewAvailableRooms.innerHTML = '';
-    pizza.forEach(room => {
+    freeRooms.forEach(room => {
       viewAvailableRooms.innerHTML += `
         <article class="room-details">
         <h3>Room Details:</h3>
@@ -126,23 +126,93 @@ const displayAllRooms = (pizza) => {
         `
     })
   }
-  if (pizza.length < 1) {
+  if (freeRooms.length < 1) {
     viewAvailableRooms.innerHTML = '';
     viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, no results!</p>`
   }
 }
 
-const makeSubmitButton = () => {
 
+///////////////////////////////////////
+
+const makeSubmitButton = () => {
+  const bookingButton = document.querySelectorAll("book-now-button");
+  bookingButton.forEach(button => {
+    button.addEventListener('click', event => {
+      console.log('it was clicked');
+      bookRoom(event.terget.value)
+    })
+  })
+}
+
+viewAvailableRooms.addEventListener('click', event => {
+  console.log('it was clicked', event.target.value);
+  bookRoom(event.target.value)
+})
+//////////
+
+const bookRoom = (roomNumber) => {
+  let data = {
+    userID: parseInt(hotel.singleCustomer.id),
+    date: date,
+    roomNumber: parseInt(roomNumber)
+  }
+  postData(data).then((data) => {
+    hotel.singleCustomer.bookings.push(data.newBooking)
+    hotel.bookingData.push(data.newBooking)
+    hotel.calculateTotal()
+      console.log("161", data);
+      loadPage(hotel.singleCustomer.id)
+      // let bookinggg = data.newBooking;
+      displayAllBookedRooms(hotel.singleCustomer.bookings)
+      console.log(data.newBooking);
+      viewAvailableRooms.innerHTML = '';
+      viewAvailableRooms.innerHTML += `<p class="message-error-text">Successfully booked!</p>`
+    })
+    .catch(error => {
+      viewAvailableRooms.innerHTML = '';
+      viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
+    })
+}
+
+const viewMyBookings = () => { //hide and show elements
+  displayAllBookedRooms(hotel.singleCustomer.bookings)
+  hideElement([mainPageView])
+  showElement([myBookingsPageView])
+}
+
+const displayAllBookedRooms = (bookedRooms) => {
+  // console.log('bookedRooms', bookedRooms)
+  myBookingsPageView.innerHTML = '';
+  bookedRooms.forEach(booking => {
+    myBookingsPageView.innerHTML += `
+      <article class="bookedCard">
+      <h3>Booking Details:</h3>
+      <p>Book date: ${booking.date}</p>
+      <p>Room number: ${booking.roomNumber}</p>
+      </article>
+    `
+  })
+}
+
+const getUserID = () => {
+  return parseInt(username.value.substring(8));
+}
+
+const getUserPassword = () => {
+  event.preventDefault();
+  if (password.value === "overlook2021" && getUserID() < 51) {
+    loadPage(getUserID())
+  } else {
+    displayError()
+  }
 }
 
 
 window.addEventListener("load", loadPage(2));
 
-// loginButton.addEventListener('click', loginUser); //iteration3
+loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
-// bookingButton.addEventListener('click', bookResult);
-// myBookingsButton.addEventListener('click', viewMyBookings);
+myBookingsButton.addEventListener('click', viewMyBookings);
 // goBackButton.addEventListener('click', returnToMainPage);
-
-export default hotel; //don't need
+// logoutButton.addEventListener('click', returnToLoginPage);
