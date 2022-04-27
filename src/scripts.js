@@ -19,7 +19,7 @@ const loginButton = document.querySelector(".login-button");
 const searchButton = document.querySelector(".search-button");
 const myBookingsButton = document.querySelector(".my-bookings-button");// check bookings
 // const goBackButton = document.querySelector(".go-back-button");
-const logoutButton = document.querySelector(".logout-button");
+// const logoutButton = document.querySelector(".logout-button");
 
 const welcomeUser = document.querySelector(".user-welcome");
 const totalSpending = document.querySelector(".total-spent");
@@ -108,6 +108,7 @@ const searchResults = () => {
 }
 
 const displayAllRooms = (freeRooms) => {
+  console.log("freeroms", freeRooms);
   if (freeRooms.length > 0) {
     viewAvailableRooms.innerHTML = '';
     freeRooms.forEach(room => {
@@ -156,25 +157,45 @@ const bookRoom = (roomNumber) => {
     date: date,
     roomNumber: parseInt(roomNumber)
   }
-  postData(data)
-    .then(data => {
+  postData(data).then((data) => {
+    hotel.singleCustomer.bookings.push(data.newBooking)
+    hotel.bookingData.push(data.newBooking)
+    hotel.calculateTotal()
+      console.log("161", data);
       loadPage(hotel.singleCustomer.id)
+      // let bookinggg = data.newBooking;
+      displayAllBookedRooms(hotel.singleCustomer.bookings)
+      console.log(data.newBooking);
       viewAvailableRooms.innerHTML = '';
       viewAvailableRooms.innerHTML += `<p class="message-error-text">Successfully booked!</p>`
     })
-    .catch(error => {
-      viewAvailableRooms.innerHTML = '';
-      viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
-    })
+    // .catch(error => {
+    //   viewAvailableRooms.innerHTML = '';
+    //   viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
+    // })
 }
 
 ///////////
 
-const viewMyBookings = () => {
+const viewMyBookings = () => { //hide and show elements
   displayAllBookedRooms(hotel.singleCustomer.bookings)
+  hideElement([mainPageView])
+  showElement([myBookingsPageView])
 }
 
-
+const displayAllBookedRooms = (bookedRooms) => {
+  // console.log('bookedRooms', bookedRooms)
+  myBookingsPageView.innerHTML = '';
+  bookedRooms.forEach(booking => {
+    myBookingsPageView.innerHTML += `
+      <article class="bookedCard">
+      <h3>Booking Details:</h3>
+      <p>Book date: ${booking.date}</p>
+      <p>Room number: ${booking.roomNumber}</p>
+      </article>
+    `
+  })
+}
 
 //////////////////////////////////////////
 
@@ -185,5 +206,6 @@ searchButton.addEventListener('click', searchResults);
 // bookingButton.addEventListener('click', bookResult); //within function!!!
 myBookingsButton.addEventListener('click', viewMyBookings);
 // goBackButton.addEventListener('click', returnToMainPage);
+// logoutButton.addEventListener('click', returnToLoginPage);
 
-export default hotel; //don't need
+// export default hotel; //don't need

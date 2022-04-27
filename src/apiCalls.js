@@ -28,13 +28,16 @@ const fetchSingleUser = (id) => {
 };
 
 const postData = (data) => {
-  fetch("http://localhost:3001/api/v1/bookings", {
+  return fetch("http://localhost:3001/api/v1/bookings", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" },
-  })
-    .then((response) => checkError(response))
-    .catch((error) => displayError(error));
+  // })
+  //   .then((response) => {
+  //     checkError(response)
+  //     return response
+    }).then(response => response.json())
+    // .catch((error) => displayError(error));
 };
 
 const displayError = (error) => {
