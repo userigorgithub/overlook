@@ -10,6 +10,7 @@ import Hotel from "../src/classes/Hotel";
 const loginPageView = document.querySelector(".login-page");
 const mainPageView = document.querySelector(".main-page");
 const myBookingsPageView = document.querySelector(".my-bookings-page");
+const myBookingsView = document.querySelector(".my-bookings-view");
 
 const username = document.querySelector(".enter-username");
 const password = document.querySelector(".enter-password");
@@ -17,7 +18,7 @@ const password = document.querySelector(".enter-password");
 const loginButton = document.querySelector(".login-button");
 const searchButton = document.querySelector(".search-button");
 const myBookingsButton = document.querySelector(".my-bookings-button");
-// const goBackButton = document.querySelector(".go-back-button");
+const goBackButton = document.querySelector(".go-back-button");
 // const logoutButton = document.querySelector(".logout-button");
 
 const welcomeUser = document.querySelector(".user-welcome");
@@ -141,15 +142,15 @@ const bookRoom = (roomNumber) => {
 }
 
 const viewMyBookings = () => {
-  // hideElement([mainPageView, loginPageView])
-  // showElement([myBookingsPageView])
+  hideElement([mainPageView, loginPageView])
+  showElement([myBookingsPageView])
   displayAllBookedRooms(hotel.singleCustomer.bookings)
 }
 
 const displayAllBookedRooms = (bookedRooms) => {
-  myBookingsPageView.innerHTML = '';
+  myBookingsView.innerHTML = '';
   bookedRooms.forEach(booking => {
-    myBookingsPageView.innerHTML += `
+    myBookingsView.innerHTML += `
       <article class="bookedCard">
       <h3>Booking Details:</h3>
       <p>Book date: ${booking.date}</p>
@@ -172,11 +173,16 @@ const getUserPassword = () => {
   }
 }
 
+const returnToMainPage = () => {
+  hideElement([myBookingsPageView, loginPageView])
+  showElement([mainPageView])
+}
+
 //----------Event Listeners----------//
 
 // window.addEventListener("load", loadPage(5));
 loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
 myBookingsButton.addEventListener('click', viewMyBookings);
-// goBackButton.addEventListener('click', returnToMainPage);
+goBackButton.addEventListener('click', returnToMainPage);
 // logoutButton.addEventListener('click', returnToLoginPage);
