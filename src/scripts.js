@@ -19,7 +19,7 @@ const loginButton = document.querySelector(".login-button");
 const searchButton = document.querySelector(".search-button");
 const myBookingsButton = document.querySelector(".my-bookings-button");
 const goBackButton = document.querySelector(".go-back-button");
-// const logoutButton = document.querySelector(".logout-button");
+const logoutButton = document.querySelector(".logout-button");
 
 const welcomeUser = document.querySelector(".user-welcome");
 const totalSpending = document.querySelector(".total-spent");
@@ -178,6 +178,11 @@ const returnToMainPage = () => {
   showElement([mainPageView])
 }
 
+const returnToLoginPage = () => {
+  hideElement([myBookingsPageView, mainPageView])
+  showElement([loginPageView])
+}
+
 //----------Event Listeners----------//
 
 // window.addEventListener("load", loadPage(5));
@@ -185,4 +190,4 @@ loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
 myBookingsButton.addEventListener('click', viewMyBookings);
 goBackButton.addEventListener('click', returnToMainPage);
-// logoutButton.addEventListener('click', returnToLoginPage);
+logoutButton.addEventListener('click', returnToLoginPage);
