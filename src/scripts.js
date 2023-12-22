@@ -141,8 +141,8 @@ const bookRoom = (roomNumber) => {
 }
 
 const viewMyBookings = () => {
-  // hideElement([mainPageView, loginPageView])
-  // showElement([myBookingsPageView])
+  hideElement([mainPageView, loginPageView])
+  showElement([myBookingsPageView])
   displayAllBookedRooms(hotel.singleCustomer.bookings)
 }
 
