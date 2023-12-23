@@ -185,6 +185,12 @@ const returnToMainPage = () => {
 const returnToLoginPage = () => {
   hideElement([myBookingsPageView, mainPageView])
   showElement([loginPageView])
+  resetInputValues()
+}
+
+const resetInputValues = () => {
+  username.value = ''
+  password.value = ''
 }
 
 const resetRadioBtns = (allRadioBtns) => {
