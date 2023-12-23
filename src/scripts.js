@@ -28,17 +28,19 @@ const dateChoice = document.querySelector(".enter-date");
 const roomChoice = document.querySelectorAll('input[name="rooms"]');
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
+const allRadioBtns = document.getElementsByName("rooms");
+
 //---------Global Variables----------//
 
 let customersData, roomsData, bookingsData, hotel, date;
 
 //----------Functions----------//
 
-const showElement = domElement => {
+const showElement = (domElement) => {
   domElement.forEach(element => element.classList.remove("hidden"));
 };
 
-const hideElement = domElement => {
+const hideElement = (domElement) => {
   domElement.forEach(element => element.classList.add("hidden"));
 };
 
@@ -56,6 +58,8 @@ const displayPage = (data) => {
   hotel.filterCustBookings(data[3]);
   hotel.calculateTotal();
   displayUserInfo();
+  resetRadioBtns(allRadioBtns);
+  resetSearchField();
 }
 
 const displayUserInfo = () => {
@@ -169,18 +173,34 @@ const getUserPassword = () => {
   if (password.value === "overlook2021" && getUserID() < 51) {
     loadPage(getUserID())
   } else {
-    displayError()
+    displayError() // NOTE: gives in ERROR
   }
 }
 
 const returnToMainPage = () => {
   hideElement([myBookingsPageView, loginPageView])
   showElement([mainPageView])
+  resetRadioBtns(allRadioBtns)
+  resetSearchField()
 }
 
 const returnToLoginPage = () => {
   hideElement([myBookingsPageView, mainPageView])
   showElement([loginPageView])
+  resetInputValues()
+}
+
+const resetInputValues = () => {
+  username.value = ''
+  password.value = ''
+}
+
+const resetRadioBtns = (allRadioBtns) => {
+  allRadioBtns.forEach(button => button.checked = false)
+}
+
+const resetSearchField = () => {
+  viewAvailableRooms.innerHTML = ''
 }
 
 //----------Event Listeners----------//
