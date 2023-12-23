@@ -59,6 +59,7 @@ const displayPage = (data) => {
   hotel.calculateTotal();
   displayUserInfo();
   resetRadioBtns(allRadioBtns);
+  resetSearchField();
 }
 
 const displayUserInfo = () => {
@@ -172,7 +173,7 @@ const getUserPassword = () => {
   if (password.value === "overlook2021" && getUserID() < 51) {
     loadPage(getUserID())
   } else {
-    displayError()
+    displayError() // NOTE: gives in ERROR
   }
 }
 
@@ -180,6 +181,7 @@ const returnToMainPage = () => {
   hideElement([myBookingsPageView, loginPageView])
   showElement([mainPageView])
   resetRadioBtns(allRadioBtns)
+  resetSearchField()
 }
 
 const returnToLoginPage = () => {
@@ -195,6 +197,10 @@ const resetInputValues = () => {
 
 const resetRadioBtns = (allRadioBtns) => {
   allRadioBtns.forEach(button => button.checked = false)
+}
+
+const resetSearchField = () => {
+  viewAvailableRooms.innerHTML = ''
 }
 
 //----------Event Listeners----------//
