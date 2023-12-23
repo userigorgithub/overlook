@@ -28,17 +28,19 @@ const dateChoice = document.querySelector(".enter-date");
 const roomChoice = document.querySelectorAll('input[name="rooms"]');
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
+const allRadioBtns = document.getElementsByName("rooms");
+
 //---------Global Variables----------//
 
 let customersData, roomsData, bookingsData, hotel, date;
 
 //----------Functions----------//
 
-const showElement = domElement => {
+const showElement = (domElement) => {
   domElement.forEach(element => element.classList.remove("hidden"));
 };
 
-const hideElement = domElement => {
+const hideElement = (domElement) => {
   domElement.forEach(element => element.classList.add("hidden"));
 };
 
@@ -56,6 +58,7 @@ const displayPage = (data) => {
   hotel.filterCustBookings(data[3]);
   hotel.calculateTotal();
   displayUserInfo();
+  resetRadioBtns(allRadioBtns);
 }
 
 const displayUserInfo = () => {
@@ -176,11 +179,16 @@ const getUserPassword = () => {
 const returnToMainPage = () => {
   hideElement([myBookingsPageView, loginPageView])
   showElement([mainPageView])
+  resetRadioBtns(allRadioBtns)
 }
 
 const returnToLoginPage = () => {
   hideElement([myBookingsPageView, mainPageView])
   showElement([loginPageView])
+}
+
+const resetRadioBtns = (allRadioBtns) => {
+  allRadioBtns.forEach(button => button.checked = false)
 }
 
 //----------Event Listeners----------//
