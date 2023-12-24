@@ -95,9 +95,9 @@ body {
   display: flex;
 }
 
-.message-error-text {
+.text-area {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   font-size: 20px;
 }
 
