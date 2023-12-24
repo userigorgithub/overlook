@@ -29,6 +29,7 @@ const roomChoice = document.querySelectorAll('input[name="rooms"]');
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
 const allRadioBtns = document.getElementsByName("rooms");
+const errorMessageArea = document.querySelector('.message-error-area');
 
 //---------Global Variables----------//
 
@@ -63,7 +64,7 @@ const displayPage = (data) => {
 }
 
 const displayUserInfo = () => {
-  hideElement([loginPageView])
+  hideElement([loginPageView, myBookingsPageView])
   showElement([mainPageView])
   greetUser(hotel.singleCustomer.name, hotel.singleCustomer.totalSpent)
 }
@@ -97,9 +98,9 @@ const displayAllRooms = (freeRooms) => {
         <p>Room number: ${room.number}</p>
         <p>Room type: ${room.roomType}</p>
         <p>Bidet: ${room.bidet}</p>
-        <p>Bed Size: ${room.bedSize}</p>
+        <p>Bed size: ${room.bedSize}</p>
         <p>Number of beds: ${room.numBeds}</p>
-        <p>Cost per night: ${room.costPerNight}</p>
+        <p>Cost per night: $${room.costPerNight}</p>
         <button class="book-now-button" value=${room.number}>Submit</button>
         </article>
         `
@@ -120,9 +121,9 @@ const makeSubmitButton = () => {
   })
 }
 
-viewAvailableRooms.addEventListener('click', event => {
-  bookRoom(event.target.value)
-})
+// viewAvailableRooms.addEventListener('click', event => {
+//   bookRoom(event.target.value)
+// })
 
 const bookRoom = (roomNumber) => {
   let data = {
@@ -137,7 +138,7 @@ const bookRoom = (roomNumber) => {
       loadPage(hotel.singleCustomer.id)
       displayAllBookedRooms(hotel.singleCustomer.bookings)
       viewAvailableRooms.innerHTML = '';
-      viewAvailableRooms.innerHTML += `<p class="message-error-text">Successfully booked!</p>`
+      errorMessageArea.innerText += `Successfully Booked Your Stay!` // CSS
     })
     .catch(error => {
       viewAvailableRooms.innerHTML = '';
@@ -211,3 +212,6 @@ searchButton.addEventListener('click', searchResults);
 myBookingsButton.addEventListener('click', viewMyBookings);
 goBackButton.addEventListener('click', returnToMainPage);
 logoutButton.addEventListener('click', returnToLoginPage);
+viewAvailableRooms.addEventListener('click', event => {
+  bookRoom(event.target.value)
+})
