@@ -15,6 +15,10 @@ body {
   align-items: center;
 }
 
+.login-username, .login-password {
+  margin-right: 85px;
+}
+
 .title-message, .login-form {
   justify-content: space-around;
   height: 30vh;
