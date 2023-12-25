@@ -103,6 +103,8 @@ body {
   display: flex;
   justify-content: space-around;
   font-size: 20px;
+  margin-right: 300px;
+  gap: 250px;
 }
 
 .booking-form {
