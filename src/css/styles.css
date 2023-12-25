@@ -157,9 +157,16 @@ body {
 }
 
 .room-details {
+  display: flex;
+  flex-direction: column;
   background-color: #FFF;
   border-radius: 10px;
   border: solid 3px black;
+}
+
+.book-now-button {
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 /* BOOKINGS PAGE RULES */
