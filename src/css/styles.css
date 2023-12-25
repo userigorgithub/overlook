@@ -148,7 +148,7 @@ body {
 }
 
 .view-avail-rooms-area {
-  background-color: #FFF;
+  background-color: #F7F5F6;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -161,7 +161,7 @@ body {
   flex-direction: column;
   background-color: #FFF;
   border-radius: 10px;
-  border: solid 3px black;
+  border: solid 1px black;
 }
 
 .book-now-button {
@@ -197,7 +197,7 @@ body {
 .bookedCard {
   background-color: #FFF;
   border-radius: 10px;
-  border: solid 3px black;
+  border: solid 1px black;
 }
 
 /* HIDDEN */
