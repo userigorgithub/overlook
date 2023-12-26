@@ -83,10 +83,14 @@ const searchResults = () => {
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
       makeSubmitButton();
+      textMessage.innerText = '';
+      textMessage.innerText += `Book Your Stay Now?`
     } else {
     hotel.filterByRoomType(selectedChoice.value)
     displayAllRooms(hotel.availRoomsByType)
     makeSubmitButton();
+    textMessage.innerText = '';
+    textMessage.innerText += `Book Your Stay Now?`
     }
 }
 
