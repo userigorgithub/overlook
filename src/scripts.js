@@ -24,12 +24,14 @@ const logoutButton = document.querySelector(".logout-button");
 const welcomeUser = document.querySelector(".user-welcome");
 const totalSpending = document.querySelector(".total-spent");
 
+const textMessage = document.querySelector('.message-text');
+
 const dateChoice = document.querySelector(".enter-date");
 const roomChoice = document.querySelectorAll('input[name="rooms"]');
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
 const allRadioBtns = document.getElementsByName("rooms");
-const errorMessageArea = document.querySelector('.message-error-area');
+// const errorMessageArea = document.querySelector('.message-error-area');
 
 //---------Global Variables----------//
 
@@ -137,8 +139,8 @@ const bookRoom = (roomNumber) => {
     hotel.calculateTotal()
       loadPage(hotel.singleCustomer.id)
       displayAllBookedRooms(hotel.singleCustomer.bookings)
-      viewAvailableRooms.innerHTML = '';
-      errorMessageArea.innerText += `Successfully Booked Your Stay!`
+      textMessage.innerText = '';
+      textMessage.innerText += `Successfully Booked Your Stay!`
     })
     .catch(error => {
       viewAvailableRooms.innerHTML = '';

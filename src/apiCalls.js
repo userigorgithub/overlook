@@ -1,4 +1,4 @@
-const errorMessage = document.querySelector('.message-error-text');
+const errorMessage = document.querySelector('.message-text');
 
 let apiCustomersData, apiRoomsData, apiBookingsData;
 
