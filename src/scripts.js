@@ -31,7 +31,6 @@ const roomChoice = document.querySelectorAll('input[name="rooms"]');
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
 const allRadioBtns = document.getElementsByName("rooms");
-// const errorMessageArea = document.querySelector('.message-error-area');
 
 //---------Global Variables----------//
 
@@ -83,14 +82,14 @@ const searchResults = () => {
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
       makeSubmitButton();
-      textMessage.innerText = '';
-      textMessage.innerText += `Book Your Stay Now?`
+      // textMessage.innerText = '';
+      // textMessage.innerText += `Book Your Stay Now?`
     } else {
     hotel.filterByRoomType(selectedChoice.value)
     displayAllRooms(hotel.availRoomsByType)
     makeSubmitButton();
-    textMessage.innerText = '';
-    textMessage.innerText += `Book Your Stay Now?`
+    // textMessage.innerText = '';
+    // textMessage.innerText += `Book Your Stay Now?`
     }
 }
 
@@ -126,10 +125,6 @@ const makeSubmitButton = () => {
     })
   })
 }
-
-// viewAvailableRooms.addEventListener('click', event => {
-//   bookRoom(event.target.value)
-// })
 
 const bookRoom = (roomNumber) => {
   let data = {
@@ -212,7 +207,6 @@ const resetSearchField = () => {
 
 //----------Event Listeners----------//
 
-// window.addEventListener("load", loadPage(5));
 loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
 myBookingsButton.addEventListener('click', viewMyBookings);
