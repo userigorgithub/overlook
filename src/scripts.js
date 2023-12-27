@@ -24,12 +24,13 @@ const logoutButton = document.querySelector(".logout-button");
 const welcomeUser = document.querySelector(".user-welcome");
 const totalSpending = document.querySelector(".total-spent");
 
+const textMessage = document.querySelector('.message-text');
+
 const dateChoice = document.querySelector(".enter-date");
 const roomChoice = document.querySelectorAll('input[name="rooms"]');
 const viewAvailableRooms = document.querySelector(".view-avail-rooms-area");
 
 const allRadioBtns = document.getElementsByName("rooms");
-const errorMessageArea = document.querySelector('.message-error-area');
 
 //---------Global Variables----------//
 
@@ -81,10 +82,14 @@ const searchResults = () => {
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
       makeSubmitButton();
+      // textMessage.innerText = '';
+      // textMessage.innerText += `Book Your Stay Now?`
     } else {
     hotel.filterByRoomType(selectedChoice.value)
     displayAllRooms(hotel.availRoomsByType)
     makeSubmitButton();
+    // textMessage.innerText = '';
+    // textMessage.innerText += `Book Your Stay Now?`
     }
 }
 
@@ -121,10 +126,6 @@ const makeSubmitButton = () => {
   })
 }
 
-// viewAvailableRooms.addEventListener('click', event => {
-//   bookRoom(event.target.value)
-// })
-
 const bookRoom = (roomNumber) => {
   let data = {
     userID: parseInt(hotel.singleCustomer.id),
@@ -137,8 +138,8 @@ const bookRoom = (roomNumber) => {
     hotel.calculateTotal()
       loadPage(hotel.singleCustomer.id)
       displayAllBookedRooms(hotel.singleCustomer.bookings)
-      viewAvailableRooms.innerHTML = '';
-      errorMessageArea.innerText += `Successfully Booked Your Stay!`
+      textMessage.innerText = '';
+      textMessage.innerText += `Successfully Booked Your Stay!`
     })
     .catch(error => {
       viewAvailableRooms.innerHTML = '';
@@ -206,7 +207,6 @@ const resetSearchField = () => {
 
 //----------Event Listeners----------//
 
-// window.addEventListener("load", loadPage(5));
 loginButton.addEventListener('click', getUserPassword);
 searchButton.addEventListener('click', searchResults);
 myBookingsButton.addEventListener('click', viewMyBookings);
