@@ -111,7 +111,7 @@ const displayAllRooms = (freeRooms) => {
   }
   if (freeRooms.length < 1) {
     viewAvailableRooms.innerHTML = '';
-    viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, no results!</p>`
+    viewAvailableRooms.innerHTML += `<p class="message-text">Sorry, no results! Try different search.</p>`
   }
 }
 
@@ -140,8 +140,8 @@ const bookRoom = (roomNumber) => {
       textMessage.innerText = `Successfully Booked Your Stay!`
     })
     .catch(error => {
-      viewAvailableRooms.innerHTML = '';
-      viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
+      textMessage.innerText = '';
+      textMessage.innerText += `Sorry, server is down. Try again later!`
     })
 }
 
