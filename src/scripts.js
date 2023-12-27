@@ -137,7 +137,7 @@ const bookRoom = (roomNumber) => {
       loadPage(hotel.singleCustomer.id)
       displayAllBookedRooms(hotel.singleCustomer.bookings)
       textMessage.innerText = '';
-      textMessage.innerText += `Successfully Booked Your Stay!`
+      textMessage.innerText = `Successfully Booked Your Stay!`
     })
     .catch(error => {
       viewAvailableRooms.innerHTML = '';
@@ -182,12 +182,14 @@ const returnToMainPage = () => {
   showElement([mainPageView])
   resetRadioBtns(allRadioBtns)
   resetSearchField()
+  resetSearchResults()
 }
 
 const returnToLoginPage = () => {
   hideElement([myBookingsPageView, mainPageView])
   showElement([loginPageView])
   resetInputValues()
+  resetSearchResults()
 }
 
 const resetInputValues = () => {
@@ -205,7 +207,7 @@ const resetSearchField = () => {
 
 const resetSearchResults = () => {
   textMessage.innerText = '';
-  textMessage.innerText += `Book Your Stay Now?`
+  textMessage.innerText = `Book Your Stay Now?`
 }
 
 //----------Event Listeners----------//
