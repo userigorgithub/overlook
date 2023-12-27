@@ -1,4 +1,4 @@
-const errorMessage = document.querySelector('.message-text');
+const errorMessage = document.querySelector('.message-error-text');
 
 let apiCustomersData, apiRoomsData, apiBookingsData;
 
@@ -32,7 +32,7 @@ const postData = (data) => {
 
 const displayError = (error) => {
   if (error.message === "Failed to fetch") {
-    errorMessage.innerText = "Ops, sorry! Try again!";
+    errorMessage.innerText = "Sorry, server is down. Try again later!";
   } else {
     errorMessage.innerText = error.message;
   }

@@ -30,12 +30,12 @@ body {
 
 .login-page-title {
   font-size: 30px;
-  margin-top: 15vh;
+  margin-top: 25vh;
 }
 
-.login-error-text {
-  font-size: 22px;
-  margin-bottom: 7vh;
+.message-error-text {
+  font-size: 20px;
+  margin-bottom: 20vh;
 }
 
 .login-form {
