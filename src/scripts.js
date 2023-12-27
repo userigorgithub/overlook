@@ -82,14 +82,12 @@ const searchResults = () => {
     if (!selectedChoice) {
       displayAllRooms(hotel.availRoomsByDate)
       makeSubmitButton();
-      // textMessage.innerText = '';
-      // textMessage.innerText += `Book Your Stay Now?`
+      resetSearchResults();
     } else {
     hotel.filterByRoomType(selectedChoice.value)
     displayAllRooms(hotel.availRoomsByType)
     makeSubmitButton();
-    // textMessage.innerText = '';
-    // textMessage.innerText += `Book Your Stay Now?`
+    resetSearchResults();
     }
 }
 
@@ -203,6 +201,11 @@ const resetRadioBtns = (allRadioBtns) => {
 
 const resetSearchField = () => {
   viewAvailableRooms.innerHTML = ''
+}
+
+const resetSearchResults = () => {
+  textMessage.innerText = '';
+  textMessage.innerText += `Book Your Stay Now?`
 }
 
 //----------Event Listeners----------//
