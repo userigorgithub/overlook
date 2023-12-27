@@ -46,4 +46,4 @@ const checkError = (response) => {
   }
 };
 
-export {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError};
+export {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError, errorMessage};

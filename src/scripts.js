@@ -1,5 +1,5 @@
 import './css/styles.css';
-import {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError} from './apiCalls';
+import {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError, errorMessage} from './apiCalls';
 import Customer from "../src/classes/Customer";
 import Room from "../src/classes/Room";
 import Booking from "../src/classes/Booking";
@@ -175,7 +175,7 @@ const getUserPassword = () => {
   if (password.value === "overlook2021" && getUserID() < 51) {
     loadPage(getUserID())
   } else {
-    displayError() // NOTE: gives in ERROR
+    errorMessage.innerText = "Enter correct information!"
   }
 }
 
