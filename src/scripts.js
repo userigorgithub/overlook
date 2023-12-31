@@ -93,7 +93,7 @@ const searchResults = () => {
 
 const displayAllRooms = (freeRooms) => {
   if (freeRooms.length > 0) {
-    viewAvailableRooms.innerHTML = '';
+    resetSearchField();
     freeRooms.forEach(room => {
       viewAvailableRooms.innerHTML += `
         <article class="room-details">
@@ -106,12 +106,12 @@ const displayAllRooms = (freeRooms) => {
         <p>Cost per night: $${room.costPerNight}</p>
         <button class="book-now-button" value=${room.number}>Submit</button>
         </article>
-        `
+      `
     })
   }
   if (freeRooms.length < 1) {
-    viewAvailableRooms.innerHTML = '';
-    viewAvailableRooms.innerHTML += `<p class="message-text">Sorry, no results! Try different search.</p>`
+    resetSearchField();
+    viewAvailableRooms.innerHTML += `Sorry, no results. Try again later!`
   }
 }
 
