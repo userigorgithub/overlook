@@ -137,7 +137,7 @@ const bookRoom = (roomNumber) => {
       loadPage(hotel.singleCustomer.id)
       displayAllBookedRooms(hotel.singleCustomer.bookings);
       textMessage.innerText = '';
-      textMessage.innerText += `Successfully Booked Your Stay!`
+      textMessage.innerText += `Successfully booked your stay!`
     })
     .catch(error => {
       textMessage.innerText = '';
