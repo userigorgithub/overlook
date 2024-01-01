@@ -1,5 +1,5 @@
 import './css/styles.css';
-import {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError} from './apiCalls';
+import {fetchAll, fetchData, fetchSingleUser, apiCustomersData, apiRoomsData, apiBookingsData, postData, displayError, errorMessage} from './apiCalls';
 import Customer from "../src/classes/Customer";
 import Room from "../src/classes/Room";
 import Booking from "../src/classes/Booking";
@@ -40,23 +40,23 @@ let customersData, roomsData, bookingsData, hotel, date;
 
 const showElement = (domElement) => {
   domElement.forEach(element => element.classList.remove("hidden"));
-};
+}
 
 const hideElement = (domElement) => {
   domElement.forEach(element => element.classList.add("hidden"));
-};
+}
 
 const loadPage = (userID) => {
   fetchAll();
   Promise.all([apiCustomersData, apiRoomsData, apiBookingsData, fetchSingleUser(userID)])
     .then((data) => displayPage(data));
-};
+}
 
 const displayPage = (data) => {
   customersData = data[0].customers;
   roomsData = data[1].rooms;
   bookingsData = data[2].bookings;
-  hotel = new Hotel(customersData, roomsData, bookingsData)
+  hotel = new Hotel(customersData, roomsData, bookingsData);
   hotel.filterCustBookings(data[3]);
   hotel.calculateTotal();
   displayUserInfo();
@@ -65,9 +65,9 @@ const displayPage = (data) => {
 }
 
 const displayUserInfo = () => {
-  hideElement([loginPageView, myBookingsPageView])
-  showElement([mainPageView])
-  greetUser(hotel.singleCustomer.name, hotel.singleCustomer.totalSpent)
+  hideElement([loginPageView, myBookingsPageView]);
+  showElement([mainPageView]);
+  greetUser(hotel.singleCustomer.name, hotel.singleCustomer.totalSpent);
 }
 
 const greetUser = (customer, totalSpent) => {
@@ -77,25 +77,23 @@ const greetUser = (customer, totalSpent) => {
 
 const searchResults = () => {
   date = dateChoice.value.split('-').join('/');
-  hotel.filterByDate(dateChoice.value.split('-').join('/'))
+  hotel.filterByDate(dateChoice.value.split('-').join('/'));
   let selectedChoice = (Array.from(roomChoice).find(input => input.checked));
     if (!selectedChoice) {
-      displayAllRooms(hotel.availRoomsByDate)
+      displayAllRooms(hotel.availRoomsByDate);
       makeSubmitButton();
-      // textMessage.innerText = '';
-      // textMessage.innerText += `Book Your Stay Now?`
+      resetSearchResults();
     } else {
-    hotel.filterByRoomType(selectedChoice.value)
-    displayAllRooms(hotel.availRoomsByType)
+    hotel.filterByRoomType(selectedChoice.value);
+    displayAllRooms(hotel.availRoomsByType);
     makeSubmitButton();
-    // textMessage.innerText = '';
-    // textMessage.innerText += `Book Your Stay Now?`
+    resetSearchResults();
     }
 }
 
 const displayAllRooms = (freeRooms) => {
   if (freeRooms.length > 0) {
-    viewAvailableRooms.innerHTML = '';
+    resetSearchField();
     freeRooms.forEach(room => {
       viewAvailableRooms.innerHTML += `
         <article class="room-details">
@@ -108,12 +106,12 @@ const displayAllRooms = (freeRooms) => {
         <p>Cost per night: $${room.costPerNight}</p>
         <button class="book-now-button" value=${room.number}>Submit</button>
         </article>
-        `
+      `
     })
   }
   if (freeRooms.length < 1) {
-    viewAvailableRooms.innerHTML = '';
-    viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, no results!</p>`
+    resetSearchField();
+    viewAvailableRooms.innerHTML += `Sorry, no results. Try again later!`
   }
 }
 
@@ -121,7 +119,7 @@ const makeSubmitButton = () => {
   const bookingButton = document.querySelectorAll("book-now-button");
   bookingButton.forEach(button => {
     button.addEventListener('click', event => {
-      bookRoom(event.terget.value)
+      bookRoom(event.terget.value);
     })
   })
 }
@@ -133,24 +131,24 @@ const bookRoom = (roomNumber) => {
     roomNumber: parseInt(roomNumber)
   }
   postData(data).then((data) => {
-    hotel.singleCustomer.bookings.push(data.newBooking)
-    hotel.bookingData.push(data.newBooking)
+    hotel.singleCustomer.bookings.push(data.newBooking);
+    hotel.bookingData.push(data.newBooking);
     hotel.calculateTotal()
       loadPage(hotel.singleCustomer.id)
-      displayAllBookedRooms(hotel.singleCustomer.bookings)
+      displayAllBookedRooms(hotel.singleCustomer.bookings);
       textMessage.innerText = '';
-      textMessage.innerText += `Successfully Booked Your Stay!`
+      textMessage.innerText += `Successfully booked your stay!`
     })
     .catch(error => {
-      viewAvailableRooms.innerHTML = '';
-      viewAvailableRooms.innerHTML += `<p class="message-error-text">Sorry, try again!</p>`
+      textMessage.innerText = '';
+      textMessage.innerText += `Sorry, server is down. Try again later!`
     })
 }
 
 const viewMyBookings = () => {
-  hideElement([mainPageView, loginPageView])
-  showElement([myBookingsPageView])
-  displayAllBookedRooms(hotel.singleCustomer.bookings)
+  hideElement([mainPageView, loginPageView]);
+  showElement([myBookingsPageView]);
+  displayAllBookedRooms(hotel.singleCustomer.bookings);
 }
 
 const displayAllBookedRooms = (bookedRooms) => {
@@ -173,23 +171,25 @@ const getUserID = () => {
 const getUserPassword = () => {
   event.preventDefault();
   if (password.value === "overlook2021" && getUserID() < 51) {
-    loadPage(getUserID())
+    loadPage(getUserID());
   } else {
-    displayError() // NOTE: gives in ERROR
+    errorMessage.innerText = `Enter correct information!`
   }
 }
 
 const returnToMainPage = () => {
-  hideElement([myBookingsPageView, loginPageView])
-  showElement([mainPageView])
-  resetRadioBtns(allRadioBtns)
-  resetSearchField()
+  hideElement([myBookingsPageView, loginPageView]);
+  showElement([mainPageView]);
+  resetRadioBtns(allRadioBtns);
+  resetSearchField();
+  resetSearchResults();
 }
 
 const returnToLoginPage = () => {
-  hideElement([myBookingsPageView, mainPageView])
-  showElement([loginPageView])
-  resetInputValues()
+  hideElement([myBookingsPageView, mainPageView]);
+  showElement([loginPageView]);
+  resetInputValues();
+  resetSearchResults();
 }
 
 const resetInputValues = () => {
@@ -198,11 +198,16 @@ const resetInputValues = () => {
 }
 
 const resetRadioBtns = (allRadioBtns) => {
-  allRadioBtns.forEach(button => button.checked = false)
+  allRadioBtns.forEach(button => button.checked = false);
 }
 
 const resetSearchField = () => {
   viewAvailableRooms.innerHTML = ''
+}
+
+const resetSearchResults = () => {
+  textMessage.innerText = ''
+  textMessage.innerText = `Book Your Stay Now?`
 }
 
 //----------Event Listeners----------//
@@ -213,5 +218,5 @@ myBookingsButton.addEventListener('click', viewMyBookings);
 goBackButton.addEventListener('click', returnToMainPage);
 logoutButton.addEventListener('click', returnToLoginPage);
 viewAvailableRooms.addEventListener('click', event => {
-  bookRoom(event.target.value)
+  bookRoom(event.target.value);
 })
