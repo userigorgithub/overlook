@@ -35,23 +35,25 @@ Proud to present LightHouse score of 100% and to have gained a new perspective a
 
 ## Instructions for Use
 
-- On opening the browser, a user has to login into application:
-Default login for customer: username: customerX, where X is a number between 1 and 50 (ex: customer1), password: overlook2021
-Default login for manager: N/A
+- On opening the browser, a user has to login into application
+Note: Default login for customer is:
+username: customerX, where X is a number between 1 and 50 (ex: customer1)
+password: overlook2021 (for all customers)
+Note: Default login for manager is: N/A
 
-![Screenshot 2024-01-02 at 1 52 03 AM](https://gist.github.com/assets/87003746/befb8bda-e2f5-4a8f-a890-869d3707a83d)
+![Screenshot 2024-01-02 at 1 52 03 AM](https://gist.github.com/assets/87003746/befb8bda-e2f5-4a8f-a890-869d3707a83d.png)
 
 - Upon logging in, user will see their interface with their name, amount spent, and booking options
 
-![Screenshot 2024-01-02 at 1 52 34 AM](https://gist.github.com/assets/87003746/24a6aa3c-a012-4378-8896-8596d3698070)
+![Screenshot 2024-01-02 at 1 52 34 AM](https://gist.github.com/assets/87003746/24a6aa3c-a012-4378-8896-8596d3698070.png)
 
 - A user may book rooms by picking a date and/or room type and clicking search button to display the results
 
-![Screenshot 2024-01-02 at 1 53 29 AM](https://gist.github.com/assets/87003746/7e6da559-5bac-48af-ada8-a6d27f6baf43)
+![Screenshot 2024-01-02 at 1 53 29 AM](https://gist.github.com/assets/87003746/7e6da559-5bac-48af-ada8-a6d27f6baf43.png)
 
 - Clicking submit button will result in storing user's booking with their past/upcoming bookings
 
-![Screenshot 2024-01-02 at 1 53 56 AM](https://gist.github.com/assets/87003746/f2c451a1-0b75-4af7-ad0c-6724b4c910cc)
+![Screenshot 2024-01-02 at 1 53 56 AM](https://gist.github.com/assets/87003746/f2c451a1-0b75-4af7-ad0c-6724b4c910cc.png)
 
 - Finally, a user may go back, book again and/or log out from an application
 
