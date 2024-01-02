@@ -1,7 +1,5 @@
 # Overlook Hotel
 
-### Final Solo Project
-
 ## Overview
 
 Overlook Hotel was a final solo project which used Javascript as primary front-end language (along with html and css) as well as API requests (GET and POST). It allowed deeper understanding in fetching and posting requests and their interaction with front-end programming languages.
@@ -16,6 +14,8 @@ Proud to present LightHouse score of 100% and to have gained a new perspective a
 
 ## Local Set-Up Instructions
 
+### Front-end
+
 - From the repo click the code button and copy the SSH link.
 - Open terminal by pressing command + space bar, and search for terminal
 - Inside of you terminal type `git clone` and then paste the SSH link.
@@ -29,20 +29,31 @@ Proud to present LightHouse score of 100% and to have gained a new perspective a
 
 - NOTE: Make sure that you type `Control + C` in your terminal when you are done using the application. This ensure the server will stop running before your close your Terminal.
 
+### Back-end
+
+- For back-end, refer to this repo: [https://github.com/userigorgithub/overlook-api]
+
 ## Instructions for Use
 
-- On opening the browser, a user has to login into application
+- On opening the browser, a user has to login into application:
+Default login for customer: username: customerX, where X is a number between 1 and 50 (ex: customer1), password: overlook2021
+Default login for manager: N/A
 
-<img width="1034" alt="Screen Shot 2022-04-26 at 9 26 28 PM" src="https://user-images.githubusercontent.com/87003746/165434015-c8568160-f38b-4d94-9b1a-d1be89cdbfc8.png">
+![Screenshot 2024-01-02 at 1 52 03 AM](https://gist.github.com/assets/87003746/befb8bda-e2f5-4a8f-a890-869d3707a83d)
 
-- A user may book rooms by picking a date and room type and clicking search button to display the results
+- Upon logging in, user will see their interface with their name, amount spent, and booking options
 
-<img width="1032" alt="Screen Shot 2022-04-26 at 9 29 02 PM" src="https://user-images.githubusercontent.com/87003746/165434180-cfecb6b8-e7b2-4b5e-8239-08a67cb82cd7.png">
+![Screenshot 2024-01-02 at 1 52 34 AM](https://gist.github.com/assets/87003746/24a6aa3c-a012-4378-8896-8596d3698070)
+
+- A user may book rooms by picking a date and/or room type and clicking search button to display the results
+
+![Screenshot 2024-01-02 at 1 53 29 AM](https://gist.github.com/assets/87003746/7e6da559-5bac-48af-ada8-a6d27f6baf43)
 
 - Clicking submit button will result in storing user's booking with their past/upcoming bookings
 
-<img width="1035" alt="Screen Shot 2022-04-26 at 9 31 05 PM" src="https://user-images.githubusercontent.com/87003746/165434382-cd845c62-377e-49de-9d5c-3b5368becc60.png">
+![Screenshot 2024-01-02 at 1 53 56 AM](https://gist.github.com/assets/87003746/f2c451a1-0b75-4af7-ad0c-6724b4c910cc)
 
+- Finally, a user may go back, book again and/or log out from an application
 
 ## Technologies Used
 
@@ -58,12 +69,11 @@ Proud to present LightHouse score of 100% and to have gained a new perspective a
 ## Future Features
 
 - Implement manager interaction
-- Implement SCSS and Sass to create a dynamic style on page
-- Implement additional features like Logout, etc.
+- Implement more responsive layout (media queries)
 
 ## Project management
 
-- I've used a [Github Project Board](https://github.com/userigorgithub/overlook/projects/1) stay on task and meet the deadline
+- I've used a [Github Project Board](https://github.com/userigorgithub/overlook/projects/1) to stay on task and meet the deadline
 - The project specs and guideline for this project can be found [HERE](https://frontend.turing.edu/projects/overlook.html)
 
 ## Contributors
