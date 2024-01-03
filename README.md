@@ -41,19 +41,19 @@ username: customerX, where X is a number between 1 and 50 (ex: customer1)
 password: overlook2021 (for all customers)
 Note: Default login for manager is: N/A
 
-![Screenshot 2024-01-02 at 1 52 03 AM](https://gist.github.com/assets/87003746/209bb5ae-9f6c-4238-b251-b627cfa59a0a)
+![Screenshot 2024-01-02 at 1 52 03 AM](https://github.com/userigorgithub/overlook/assets/87003746/5f921f47-5680-44db-9392-c814fa09c1bc)
 
 - Upon logging in, user will see their interface with their name, amount spent, and booking options
 
-![Screenshot 2024-01-02 at 1 52 34 AM](https://gist.github.com/assets/87003746/24a6aa3c-a012-4378-8896-8596d3698070.png)
+![Screenshot 2024-01-02 at 1 52 34 AM](https://github.com/userigorgithub/overlook/assets/87003746/aad2cdd4-4cc0-4413-9e69-b22a9c338d8a)
 
 - A user may book rooms by picking a date and/or room type and clicking search button to display the results
 
-![Screenshot 2024-01-02 at 1 53 29 AM](https://gist.github.com/assets/87003746/7e6da559-5bac-48af-ada8-a6d27f6baf43.png)
+![Screenshot 2024-01-02 at 1 53 29 AM](https://github.com/userigorgithub/overlook/assets/87003746/1f8896f0-7b72-4161-8369-32bb931af83b)
 
 - Clicking submit button will result in storing user's booking with their past/upcoming bookings
 
-![Screenshot 2024-01-02 at 1 53 56 AM](https://gist.github.com/assets/87003746/f2c451a1-0b75-4af7-ad0c-6724b4c910cc.png)
+![Screenshot 2024-01-02 at 1 53 56 AM](https://github.com/userigorgithub/overlook/assets/87003746/d319b841-0cf0-4881-a3a5-16c100345220)
 
 - Finally, a user may go back, book again and/or log out from an application
 
