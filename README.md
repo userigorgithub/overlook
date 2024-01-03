@@ -41,7 +41,7 @@ username: customerX, where X is a number between 1 and 50 (ex: customer1)
 password: overlook2021 (for all customers)
 Note: Default login for manager is: N/A
 
-![Screenshot 2024-01-02 at 1 52 03 AM](https://gist.github.com/assets/87003746/befb8bda-e2f5-4a8f-a890-869d3707a83d.png)
+![Screenshot 2024-01-02 at 1 52 03 AM](https://gist.github.com/assets/87003746/209bb5ae-9f6c-4238-b251-b627cfa59a0a)
 
 - Upon logging in, user will see their interface with their name, amount spent, and booking options
 
